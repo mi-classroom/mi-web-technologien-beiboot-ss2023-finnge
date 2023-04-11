@@ -29,7 +29,6 @@
 ## In Betracht gezogene Optionen
 
 * Standard WebXR API mit WebGL
-* Googles Model-Viewer
 * A-Frame
 * three.js
 * p5.xr
@@ -50,31 +49,50 @@ Gewählte Option: "{Titel der Option 1}", weil
 <!-- Dies ist ein optionales Element. Fühlen Sie sich frei, es zu entfernen. -->
 ## Validierung
 
-{beschreibt, wie die Umsetzung/Einhaltung des ADR validiert wird. Z.B. durch eine Überprüfung oder einen ArchUnit-Test}
+Jede Option wird innerhalb eines minimalen PoC validiert.
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ## Pro und Kontra der Optionen
 
-### {Titel der Option 1}
+### Standard WebXR API mit WebGL
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 {Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
 
-* Gut, denn {Argument a}
-* Gut, weil {Argument b}
-<!-- Verwende "neutral", wenn das angegebene Argument weder für gut noch für schlecht gewichtet ist -->
-* Neutral, weil {Argument c}
-* Schlecht, weil {Argument d}
-* ... <!-- Anzahl der Vor- und Nachteile kann variieren -->
+* 🟢 Gut, weil {Argument a}
+* 🟢 Gut, weil {Argument b}
+* 🟡 Neutral, weil {Argument c}
+* 🔴 Schlecht, weil {Argument d}
+* ...
 
-### {Titel der anderen Option}
+### A-Frame
 
 {Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
 
-* Gut, weil {Argument a}
-* Gut, weil {Argument b}
-* Neutral, weil {Argument c}
-* Schlecht, weil {Argument d}
+* 🟢 Gut, weil {Argument a}
+* 🟢 Gut, weil {Argument b}
+* 🟡 Neutral, weil {Argument c}
+* 🔴 Schlecht, weil {Argument d}
+* ...
+
+### three.js
+
+{Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
+
+* 🟢 Gut, weil {Argument a}
+* 🟢 Gut, weil {Argument b}
+* 🟡 Neutral, weil {Argument c}
+* 🔴 Schlecht, weil {Argument d}
+* ...
+
+### p5.xr
+
+{Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
+
+* 🟢 Gut, weil {Argument a}
+* 🟢 Gut, weil {Argument b}
+* 🟡 Neutral, weil {Argument c}
+* 🔴 Schlecht, weil {Argument d}
 * ...
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
