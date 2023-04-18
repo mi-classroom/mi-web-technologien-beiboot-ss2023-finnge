@@ -1,4 +1,4 @@
-# [ADR](./README.md) › WebXR Technology
+# [ADR](./README.md) › A-Frame als Framework für WebXR
 <table>
 <tr>
 <th>status</th>
@@ -6,7 +6,7 @@
 </tr>
 <tr>
 <th>date</th>
-<td>2023-04-XX</td><!-- YYYY-MM-DD, when the decision was last updated -->
+<td>2023-04-18</td><!-- YYYY-MM-DD, when the decision was last updated -->
 </tr>
 <tr>
 <th>deciders</th>
@@ -22,34 +22,27 @@
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ## Entscheidungstreiber
 
-* {Entscheidungstreiber 1, z.B. eine Kraft, ein Anliegen, ...}
-* {Entscheidungstreiber 2, z.B. eine Kraft, die Bedenken hat, ...}
-* ... <!-- Anzahl der Treiber kann variieren -->
+* Ease-of-use
+* Browser-Support
+* Simplicity
+* Documentation
 
 ## In Betracht gezogene Optionen
 
 * Standard WebXR API mit WebGL
 * A-Frame
 * three.js
-* p5.xr
-* ... <!-- Anzahl der Optionen kann variieren -->
 
 ## Ergebnis der Entscheidung
 
-Gewählte Option: "{Titel der Option 1}", weil
-{Begründung. z.B., einzige Option, die das K.O.-Kriterium Entscheidungstreiber erfüllt | die Kraft {Kraft} auflöst | ... | am besten ausfällt (siehe unten)}.
+Gewählte Option: "A-Frame", weil es am besten ausfällt (siehe unten)}.
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ### Consequences
 
-* Gut, weil {positive Folge, z.B. Verbesserung einer oder mehrerer gewünschter Eigenschaften, ...}
-* Schlecht, weil {negative Konsequenz, z.B. Beeinträchtigung einer oder mehrerer gewünschter Eigenschaften, ...}
-* ... <!-- Anzahl der Konsequenzen kann variieren -->
+* 🟢 Gut, weil Abstraktion der WebGL API ermöglicht es uns, uns auf die Entwicklung der Anwendung zu konzentrieren.
+* 🟡 Neutral, weil Abhängigkeit von einer Library entsteht.
 
-<!-- Dies ist ein optionales Element. Fühlen Sie sich frei, es zu entfernen. -->
-## Validierung
-
-Jede Option wird innerhalb eines minimalen PoC validiert.
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ## Pro und Kontra der Optionen
@@ -59,41 +52,28 @@ Jede Option wird innerhalb eines minimalen PoC validiert.
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 {Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
 
-* 🟢 Gut, weil {Argument a}
-* 🟢 Gut, weil {Argument b}
-* 🟡 Neutral, weil {Argument c}
-* 🔴 Schlecht, weil {Argument d}
-* ...
+* 🟢 Gut, weil standardisierte API kann besser verstanden werden.
+* 🟢 Gut, weil standardisierte API ermöglicht es, die Technologie zu erweitern.
+* 🔴 Schlecht, weil hohe Komplexität und selbst [offizielle WebXR Beispiele](https://github.com/immersive-web/webxr-samples/tree/main/js/render) mit Hilfe einer Library weg-abstrahiert werden.
 
 ### A-Frame
 
-{Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
+<https://aframe.io/docs/1.4.0/components/webxr.html>
 
-* 🟢 Gut, weil {Argument a}
-* 🟢 Gut, weil {Argument b}
-* 🟡 Neutral, weil {Argument c}
-* 🔴 Schlecht, weil {Argument d}
-* ...
+* 🟢 Gut, weil Abstraktion der WebGL API
+* 🟢 Gut, weil deklerative Szenenbeschreibung über Web-Componenten
+* 🟢 Gut, weil viele Plugins bestehen, mit denen sich die Funktionalität erweitern lassen
+* 🟢 Gut, weil WebXR and AR.js support besteht um tracking zu ermöglichen
+* 🟢 Gut, weil A-Frame auf three.js aufbaut
+* 🟡 Neutral, weil Abhänigkeit von einer Library
 
 ### three.js
 
-{Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
+<https://threejs.org/docs/>
 
-* 🟢 Gut, weil {Argument a}
-* 🟢 Gut, weil {Argument b}
-* 🟡 Neutral, weil {Argument c}
-* 🔴 Schlecht, weil {Argument d}
-* ...
-
-### p5.xr
-
-{Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
-
-* 🟢 Gut, weil {Argument a}
-* 🟢 Gut, weil {Argument b}
-* 🟡 Neutral, weil {Argument c}
-* 🔴 Schlecht, weil {Argument d}
-* ...
+* 🟢 Gut, weil Abstraktion der WebGL API
+* 🟢 Gut, weil viele Plugins bestehen, mit denen sich die Funktionalität erweitern lassen
+* 🟡 Neutral, weil setup vollständig in JS erfolgt
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ## Weitere Informationen
