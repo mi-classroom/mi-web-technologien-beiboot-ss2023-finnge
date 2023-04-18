@@ -42,8 +42,8 @@ Gewählte Option: "{Titel der Option 1}", weil
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ### Consequences
 
-* Gut, weil {positive Folge, z.B. Verbesserung einer oder mehrerer gewünschter Eigenschaften, ...}
-* Schlecht, weil {negative Konsequenz, z.B. Beeinträchtigung einer oder mehrerer gewünschter Eigenschaften, ...}
+* 🟢 Gut, weil {positive Folge, z.B. Verbesserung einer oder mehrerer gewünschter Eigenschaften, ...}
+* 🔴 Schlecht, weil {negative Konsequenz, z.B. Beeinträchtigung einer oder mehrerer gewünschter Eigenschaften, ...}
 * ... <!-- Anzahl der Konsequenzen kann variieren -->
 
 <!-- Dies ist ein optionales Element. Fühlen Sie sich frei, es zu entfernen. -->
@@ -59,21 +59,20 @@ Gewählte Option: "{Titel der Option 1}", weil
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 {Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
 
-* Gut, denn {Argument a}
-* Gut, weil {Argument b}
-<!-- Verwende "neutral", wenn das angegebene Argument weder für gut noch für schlecht gewichtet ist -->
-* Neutral, weil {Argument c}
-* Schlecht, weil {Argument d}
-* ... <!-- Anzahl der Vor- und Nachteile kann variieren -->
+* 🟢 Gut, weil {Argument a}
+* 🟢 Gut, weil {Argument b}
+* 🟡 Neutral, weil {Argument c}
+* 🔴 Schlecht, weil {Argument d}
+* ...
 
 ### {Titel der anderen Option}
 
 {Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
 
-* Gut, weil {Argument a}
-* Gut, weil {Argument b}
-* Neutral, weil {Argument c}
-* Schlecht, weil {Argument d}
+* 🟢 Gut, weil {Argument a}
+* 🟢 Gut, weil {Argument b}
+* 🟡 Neutral, weil {Argument c}
+* 🔴 Schlecht, weil {Argument d}
 * ...
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
