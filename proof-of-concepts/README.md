@@ -1,0 +1,6 @@
+- [ ] markerless object positioning
+- [ ] marker based object positioning -> https://github.com/mrdoob/three.js/issues/22682
+- [ ] geo-based object positioning
+- [ ] markerless audio positioning
+- [ ] marker based audio positioning
+- [ ] geo-based audio positioning
