@@ -30,6 +30,11 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 [Open in Browser with Debug](./geo-object.html?eruda=true)
 
 
+**Learnings:**
+
+- Genauigkeit der GPS Positionierung ist auf 5 m beschränkt. Positionierung von 3D Objekten ist damit nicht möglich. 
+
+
 - [ ] markerless object positioning
 - [ ] marker based object positioning -> https://github.com/mrdoob/three.js/issues/22682
 - [ ] geo-based object positioning
