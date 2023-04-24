@@ -15,7 +15,7 @@
         document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
       })();
     </script>
-    
+
     <script type="importmap">
       {
         "imports": {
@@ -27,7 +27,7 @@
 
     <link rel="stylesheet" href="./assets/base.css">
 
-    <title>Hitbox Object</title>
+    <title>Geo Object</title>
   </head>
 
   <body>
@@ -36,6 +36,67 @@
       import * as THREE from 'three';
       import { ARButton } from 'three/addons/webxr/ARButton.js';
 
+      // @see https://www.movable-type.co.uk/scripts/latlong.html
+      function distanceBetweenToPoints(lat1, lon1, lat2, lon2) {
+        const R = 6371e3; // metres
+        const φ1 = lat1 * Math.PI / 180; // φ, λ in radians
+        const φ2 = lat2 * Math.PI / 180;
+        const Δφ = (lat2 - lat1) * Math.PI / 180;
+        const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+        const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+          Math.cos(φ1) * Math.cos(φ2) *
+          Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        const d = R * c; // in metres
+
+        return d;
+      }
+
+      // Geo location
+      const startLocation = {
+        latitude: null,
+        longitude: null,
+        altitude: null,
+      };
+      const target = {
+        latitude: 51.0313889,
+        longitude: 7.0300000,
+      };
+      let geoId;
+
+      function success(pos) {
+        const crd = pos.coords;
+
+        // Set start location
+        if (!startLocation.latitude && !startLocation.longitude) {
+          startLocation.latitude = crd.latitude;
+          startLocation.longitude = crd.longitude;
+          startLocation.altitude = crd.altitude;
+        }
+
+        const distance = distanceBetweenToPoints(startLocation.latitude, startLocation.longitude, crd.latitude, crd.longitude);
+
+        console.log('Your current position is:', distance, 'meters away from the start location');
+
+        if (distance < 15) {
+          console.log("Congratulations, you reached the target");
+          //navigator.geolocation.clearWatch(geoId);
+        }
+      }
+
+      geoId = navigator.geolocation.watchPosition(
+        success,
+        (err) => {
+          console.error(`ERROR(${err.code}): ${err.message}`);
+        }, {
+          enableHighAccuracy: false,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      );
+      
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -77,8 +138,6 @@
         if (reticle.visible) {
           mesh.visible = true;
           reticle.matrix.decompose(mesh.position, mesh.quaternion, mesh.scale);
-
-          console.table({ pos: mesh.position, quat: mesh.quaternion, scale: mesh.scale })
         }
       }
 
@@ -94,7 +153,7 @@
           if (hitTestSourceRequested === false) {
             session.requestReferenceSpace('viewer').then(function (referenceSpace) {
               session.requestHitTestSource({ space: referenceSpace }).then(function (source) {
-                 hitTestSource = source;
+                hitTestSource = source;
               });
             });
 
