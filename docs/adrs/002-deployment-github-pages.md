@@ -34,7 +34,7 @@ WebXR muss über HTTPS bereitgestellt werden.
 ## Ergebnis der Entscheidung
 
 Gewählte Option: "GitHub Pages", weil
-{Begründung. z.B., einzige Option, die das K.O.-Kriterium Entscheidungstreiber erfüllt | die Kraft {Kraft} auflöst | ... | am besten ausfällt (siehe unten)}.
+einfachste und bekanntes Tool, um Code über HTTPS frei zu deployen. Ein Wechsel ist trotzdem jeder Zeit möglich.
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ### Consequences
