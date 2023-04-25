@@ -34,7 +34,10 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 
 **Learnings:**
 
-- Genauigkeit der GPS Positionierung ist auf 5 m beschränkt. Positionierung von 3D Objekten ist damit nicht möglich. 
+- Genauigkeit der GPS Positionierung ist auf 5 m beschränkt. Positionierung von 3D Objekten ist damit nicht möglich.
+- Positioneriung genauso wie bei Markerless Object Positioning
+- Bei schlechten GPS Signalen wird das Tracking (Enter of Boundingbox) schlechter
+- GPS Positionering funktioniert draußen besser als in geschlossenen Räumen
 
 
 ## Markerless Audio Positioning
@@ -48,11 +51,3 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 - Breite des Audio-Ausschlags kann recht genau spezifiziert werden
 - Audio wird leicht leiser, wenn sich vom Zentrum des Ausschlags entfernt bzw. weggewendet wird
 - Audio wird signifikant leiser, wenn sich hinter das Objekt bewegt wird
-
-
-- [ ] markerless object positioning
-- [ ] marker based object positioning -> https://github.com/mrdoob/three.js/issues/22682
-- [ ] geo-based object positioning
-- [ ] markerless audio positioning
-- [ ] marker based audio positioning
-- [ ] geo-based audio positioning
