@@ -65,6 +65,7 @@
         longitude: 7.0300000,
       };
       let geoId;
+      let hasReachedTarget = false;
 
       function success(pos) {
         const crd = pos.coords;
@@ -76,13 +77,14 @@
           startLocation.altitude = crd.altitude;
         }
 
-        const distance = distanceBetweenToPoints(startLocation.latitude, startLocation.longitude, crd.latitude, crd.longitude);
+        const distance = distanceBetweenToPoints(target.latitude, target.longitude, crd.latitude, crd.longitude);
 
         console.log('Your current position is:', distance, 'meters away from the start location');
 
         if (distance < 15) {
           console.log("Congratulations, you reached the target");
           //navigator.geolocation.clearWatch(geoId);
+          hasReachedTarget = true;
         }
       }
 
@@ -165,7 +167,7 @@
             hitTestSourceRequested = true;
           }
 
-          if (hitTestSource) {
+          if (hitTestSource && hasReachedTarget) {
             const hitTestResults = frame.getHitTestResults(hitTestSource);
 
             if (hitTestResults.length) {
