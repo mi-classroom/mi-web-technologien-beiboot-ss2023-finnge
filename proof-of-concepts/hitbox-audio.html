@@ -39,6 +39,7 @@
     <script type="module">
       import * as THREE from 'three';
       import { ARButton } from 'three/addons/webxr/ARButton.js';
+      import { PositionalAudioHelper } from 'three/addons/helpers/PositionalAudioHelper.js';
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -83,16 +84,24 @@
       camera.add(listener);
 
       const audioElement = document.getElementById('music');
-      audioElement.play();
 
       const sound = new THREE.PositionalAudio(listener);
       sound.setMediaElementSource(audioElement);
       sound.setRefDistance(1);
       sound.setDirectionalCone(180, 230, 0.1);
 
+      const helper = new PositionalAudioHelper(sound, 1);
+      sound.add(helper);
+
+      let firstTimePlaying = true;
+
 
       function onSelect() {
         if (reticle.visible) {
+          if (firstTimePlaying) {
+            firstTimePlaying = false;
+            audioElement.play();
+          }
           mesh.visible = true;
           mesh.add(sound);
           reticle.matrix.decompose(mesh.position, mesh.quaternion, mesh.scale);
