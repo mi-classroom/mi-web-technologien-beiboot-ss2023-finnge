@@ -4,7 +4,7 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 
 ## Markerless Object Positioning
 
-[Open in Browser](./hitbox-object.html)
+[Open in Browser](./hitbox-object.html) <br>
 [Open in Browser with Debug](./hitbox-object.html?eruda=true)
 
 **Learnings:**
@@ -18,7 +18,7 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 
 ## Marker based Object Positioning
 
-[Open in Browser](./marker-object.html)
+[Open in Browser](./marker-object.html) <br>
 [Open in Browser with Debug](./marker-object.html?eruda=true)
 
 **Learnings:**
@@ -28,7 +28,7 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 
 ## Geo-based Object Positioning
 
-[Open in Browser](./geo-object.html)
+[Open in Browser](./geo-object.html) <br>
 [Open in Browser with Debug](./geo-object.html?eruda=true)
 
 
@@ -42,7 +42,7 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 
 ## Markerless Audio Positioning
 
-[Open in Browser](./hitbox-audio.html)
+[Open in Browser](./hitbox-audio.html) <br>
 [Open in Browser with Debug](./hitbox-audio.html?eruda=true)
 
 **Learnings:**
