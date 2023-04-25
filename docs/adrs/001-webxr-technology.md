@@ -1,4 +1,4 @@
-# [ADR](./README.md) › A-Frame als Framework für WebXR
+# [ADR](./README.md) › Three.js als Framework für WebXR
 <table>
 <tr>
 <th>status</th>
@@ -35,12 +35,13 @@
 
 ## Ergebnis der Entscheidung
 
-Gewählte Option: "A-Frame", weil es am besten ausfällt (siehe unten)}.
+Gewählte Option: "Three.js", weil es am besten ausfällt (siehe unten)}. Vorallem, da es eine sehr gute Dokumentation hat und die JavaScript API es ermöglicht die Funktionen gut kennen zu lernen. Werden die Szenen komplexer, kann es sinnvoll sein auf A-Frame zu wechseln.
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
 ### Consequences
 
 * 🟢 Gut, weil Abstraktion der WebGL API ermöglicht es uns, uns auf die Entwicklung der Anwendung zu konzentrieren.
+* 🟢 Gut, weil ein Wechsel auf A-Frame gut möglich ist, wenn die Szenen komplexer werden.
 * 🟡 Neutral, weil Abhängigkeit von einer Library entsteht.
 
 
@@ -48,9 +49,6 @@ Gewählte Option: "A-Frame", weil es am besten ausfällt (siehe unten)}.
 ## Pro und Kontra der Optionen
 
 ### Standard WebXR API mit WebGL
-
-<!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
-{Beispiel / Beschreibung / Verweis auf weitere Informationen / ...}
 
 * 🟢 Gut, weil standardisierte API kann besser verstanden werden.
 * 🟢 Gut, weil standardisierte API ermöglicht es, die Technologie zu erweitern.
@@ -73,6 +71,7 @@ Gewählte Option: "A-Frame", weil es am besten ausfällt (siehe unten)}.
 
 * 🟢 Gut, weil Abstraktion der WebGL API
 * 🟢 Gut, weil viele Plugins bestehen, mit denen sich die Funktionalität erweitern lassen
+* 🟢 Gut, weil näher einer JS API als A-Frame
 * 🟡 Neutral, weil setup vollständig in JS erfolgt
 
 <!-- Dies ist ein optionales Element. Sie können es gerne entfernen. -->
