@@ -15,6 +15,7 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
 
 ## Review Process
 
+* The author of the pull request MUST be marked as assignee
 * Each pull request to the `main` branch MUST be reviewed by at least one person
   * The person reviewing MUST NOT be the author of the pull request 
   * The person reviewing SHOULD NOT be author of any new commits to be merged
