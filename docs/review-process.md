@@ -7,6 +7,7 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
 
 * Naming of branches MUST start with `m-` if forked from `main`
 * Naming of branches MUST confirm to format `<type>-<description>` following conventional commits[^cc]
+* Direct commits MUST be made to a branch forked from `main`
 
 ## Commits
 
