@@ -61,3 +61,4 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 **Learnings:**
 
 - Audio wird abgespielt, wenn der Würfel berührt wird
+- Herausforderung ist die Übersetzung von 2D (Click event) auf 3D (Position des Würfels) &rarr; Lösung über Raycaster (Vektoren)
