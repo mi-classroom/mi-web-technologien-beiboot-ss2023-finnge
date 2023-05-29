@@ -12,4 +12,4 @@ logs:
 
 tunnel:
 	$(MAKE) up
-	ngrok http 6060
+	ngrok http 6066
