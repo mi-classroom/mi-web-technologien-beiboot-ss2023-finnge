@@ -51,3 +51,13 @@ These proof-of-concepts are part of the [first Assignment](https://github.com/mi
 - Breite des Audio-Ausschlags kann recht genau spezifiziert werden
 - Audio wird leicht leiser, wenn sich vom Zentrum des Ausschlags entfernt bzw. weggewendet wird
 - Audio wird signifikant leiser, wenn sich hinter das Objekt bewegt wird
+
+
+## Interact with Cube to play Audio
+
+[Open in Browser](./interaction-play-music.html) <br>
+[Open in Browser with Debug](./interaction-play-music.html?eruda=true)
+
+**Learnings:**
+
+- Audio wird abgespielt, wenn der Würfel berührt wird
