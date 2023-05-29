@@ -10,3 +10,13 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 - [ADRs](./docs/adrs/README.md)
 - [Zeitaufwände](./docs/zeitaufwand.md)
 - [Review Process](./docs/review-process.md)
+
+## Befehle
+
+| Befehl | Beschreibung |
+| --- | --- |
+| `make up` | Startet die Docker Container |
+| `make down` | Stoppt die Docker Container |
+| `make restart` | Started die Docker Container neu |
+| `make logs` | Zeigt die Logs der Docker Container an |
+| `make tunnel` | Startet einen Tunnel zu localhost:6066 |
