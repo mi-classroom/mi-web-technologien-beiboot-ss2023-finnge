@@ -74,13 +74,14 @@
         mesh1.position,
         mesh2.position,
       ]), new THREE.LineBasicMaterial({
-        color: 0x0000ff
+        color: 0x0000ff,
       }));
       mesh1.visible = false;
       mesh2.visible = false;
       line.visible = false;
       scene.add(mesh1);
       scene.add(mesh2);
+      scene.add(line);
 
       let switcher = true;
 
@@ -100,7 +101,7 @@
 
           if (mesh1.visible && mesh2.visible) {
 
-            console.log('hit', switcher, line);
+            console.log('hit', switcher, line, mesh1.position, mesh2.position);
             line.visible = true;
             line.geometry.setFromPoints([
               mesh1.position,
