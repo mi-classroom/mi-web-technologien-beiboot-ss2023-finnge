@@ -22,3 +22,4 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 | `make restart` | Started die Docker Container neu |
 | `make logs` | Zeigt die Logs der Docker Container an |
 | `make tunnel` | Startet einen Tunnel zu localhost:6066 |
+| `make dev` | Startet ein dev Umgebung außerhalb von Docker |
