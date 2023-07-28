@@ -3,13 +3,16 @@
    * Colors
    */
   --color-darkest: #000000;
-  --color-darker: #161616;
-  --color-dark: #262626;
-  --color-light: #C6C6C6;
-  --color-lighter: #F4F4F4;
   --color-lightest: #FFFFFF;
 
+  --color-dark: color-mix(in srgb, var(--color-lightest) 10%, var(--color-darkest));
+  --color-darker: color-mix(in srgb, var(--color-lightest) 20%, var(--color-darkest));
+
+  --color-light: color-mix(in srgb, var(--color-darkest) 20%, var(--color-lightest));
+  --color-lighter: color-mix(in srgb, var(--color-darkest) 10%, var(--color-lightest));
+
   --color-primary: #EB6A0A;
+  --color-primary-dark: color-mix(in srgb, var(--color-primary) 90%, var(--color-darkest));
 
   /**
    * Fonts
@@ -58,24 +61,4 @@
   --border-radius-sm: 0.25rem; /* 4px */
   --border-radius-md: 0.5rem; /* 8px */
   --border-radius-lg: 1rem; /* 16px */
-}
-
-/* source-sans-3-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Source Sans 3';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/source-sans-3-v9-latin-regular.woff2') format('woff2'),
-    url('/fonts/source-sans-3-v9-latin-regular.ttf') format('truetype');
-}
-
-/* source-sans-3-700 - latin */
-@font-face {
-  font-display: swap;
-  font-family: 'Source Sans 3';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/source-sans-3-v9-latin-700.woff2') format('woff2'),
-    url('/fonts/source-sans-3-v9-latin-700.ttf') format('truetype');
 }

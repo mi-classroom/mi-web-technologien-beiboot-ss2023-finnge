@@ -1,0 +1,13 @@
+@import url('./styles/fonts.scss');
+@import url('./styles/reset.scss');
+@import url('./styles/variables.scss');
+@import url('./styles/utility.scss');
+
+body {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-normal);
+  line-height: var(--lh-md);
+  color: var(--color-darkest);
+  background-color: var(--color-lightest);
+}
