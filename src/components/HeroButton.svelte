@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let type: 'primary' | 'secondary' | 'tertiary' = 'primary';
+  export let type: "primary" | "secondary" | "tertiary" = "primary";
 
-  export let icon: string = '';
+  export let icon: string = "";
 
   // bubble some Anchor attributes
-  export let href: HTMLAnchorElement['href'] = '';
-  export let target: '_self' | '_blank' | HTMLAnchorElement['target'] = '';
+  export let href: HTMLAnchorElement["href"] = "";
+  export let target: "_self" | "_blank" | HTMLAnchorElement["target"] = "";
 </script>
 
 <a {href} {target} data-type={type}>
@@ -27,18 +27,20 @@
     text-align: center;
   }
 
-  a[data-type='primary'] {
+  a[data-type="primary"] {
     background-color: var(--color-primary);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: var(--color-primary-dark);
     }
   }
 
-  a[data-type='secondary'] {
+  a[data-type="secondary"] {
     background-color: var(--color-darkest);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: var(--color-darker);
     }
   }
@@ -47,7 +49,8 @@
     background-color: var(--color-light);
     color: var(--color-darkest);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: var(--color-lighter);
     }
   }

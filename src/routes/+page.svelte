@@ -2,7 +2,7 @@
   import type { PageData } from './$types';
 
   import HeroButton from '../components/HeroButton.svelte';
-  
+
   export let data: PageData;
 </script>
 

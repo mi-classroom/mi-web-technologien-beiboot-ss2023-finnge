@@ -6,4 +6,5 @@
     "ARlebnispfad",
     "ARlebnispfade",
   ],
+  "liveServer.settings.root": "/dist",
 }
