@@ -3,3 +3,5 @@
     
     export let data: PageData;
 </script>
+
+<h1>Bitte wählen Sie einen ARlebnispfad</h1>
