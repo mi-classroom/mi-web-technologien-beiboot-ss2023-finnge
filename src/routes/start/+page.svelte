@@ -5,16 +5,29 @@
   import TopBar from "../../components/TopBar.svelte";
 
   export let data: PageData;
+
+
 </script>
 
 <TopBar title="Wie wollen Sie starten?" />
 
-<HeroButton type="secondary" href="{data.pathname}/umgebung">
-  ARlebnisse in der Umgebung anzeigen
-</HeroButton>
+<div>
+  <HeroButton type="secondary" href="{data.pathname}/umgebung" icon="radar">
+    ARlebnisse in der Umgebung anzeigen
+  </HeroButton>
 
-<HeroButton type="primary" href="/arlebnis">
-  ARlebnis via QR Code Scan starten
-</HeroButton>
+  <HeroButton type="primary" href="/arlebnis" icon="scanner">
+    ARlebnis via QR Code Scan starten
+  </HeroButton>
 
-<HeroButton type="tertiary">Ich hab keine Ahnung</HeroButton>
+  <HeroButton type="tertiary" icon="help">Ich hab keine Ahnung</HeroButton>
+</div>
+
+<style>
+  div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+</style>
