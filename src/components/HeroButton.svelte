@@ -3,7 +3,7 @@
 
   export let type: "primary" | "secondary" | "tertiary" = "primary";
 
-  export let icon: Icon["name"] | undefined;
+  export let icon: Icon["name"] | undefined = undefined;
 
   // bubble some Anchor attributes
   export let href: HTMLAnchorElement["href"] = "";

@@ -28,7 +28,7 @@
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: var(--spacing-md);
-    padding: var(--spacing-lg) var(--outer-radius);
+    padding: var(--spacing-lg) var(--outer-margin);
     background-color: var(--color-lightest);
   }
 

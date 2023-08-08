@@ -9,6 +9,6 @@
 <style>
   .container {
     max-width: 700px;
-    margin: var(--spacing-xl) auto;
+    margin: 0 auto;
   }
 </style>
