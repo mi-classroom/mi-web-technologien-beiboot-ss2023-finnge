@@ -2,12 +2,11 @@
   import '../app.scss';
 </script>
 
-<div class="container">
-  <slot />
-</div>
+<slot />
+
 
 <style>
-  .container {
+  :global(body) {
     max-width: 700px;
     margin: 0 auto;
   }

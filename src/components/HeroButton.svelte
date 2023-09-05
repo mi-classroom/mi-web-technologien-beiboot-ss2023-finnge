@@ -10,15 +10,24 @@
   export let target: "_self" | "_blank" | HTMLAnchorElement["target"] = "_self";
 </script>
 
-<a {href} {target} data-type={type}>
+{#if href !== ""}
+<a {href} {target} data-type={type} on:click>
   {#if icon}
     <Icon name={icon} size="xxl" />
   {/if}
   <span class="text"><slot /></span>
 </a>
+{:else}
+<button data-type={type} on:click>
+  {#if icon}
+    <Icon name={icon} size="xxl" />
+  {/if}
+  <span class="text"><slot /></span>
+</button>
+{/if}
 
 <style lang="scss">
-  a {
+  a, button {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-xs);
@@ -30,9 +39,11 @@
     font-size: var(--fs-xl);
     line-height: var(--lh-xs);
     text-align: center;
+    appearance: none;
+    border: none;
   }
 
-  a[data-type="primary"] {
+  [data-type="primary"] {
     background-color: var(--color-primary);
 
     &:hover,
@@ -41,7 +52,7 @@
     }
   }
 
-  a[data-type="secondary"] {
+  [data-type="secondary"] {
     background-color: var(--color-darkest);
 
     &:hover,
@@ -50,7 +61,7 @@
     }
   }
 
-  a[data-type="tertiary"] {
+  [data-type="tertiary"] {
     background-color: var(--color-light);
     color: var(--color-darkest);
 

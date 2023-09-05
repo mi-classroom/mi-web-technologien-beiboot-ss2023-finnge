@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fs } from '../utils/sizes';
 
-  export let name: 'radar' | 'help' | 'scanner' | 'arrow-back';
+  export let name: 'radar' | 'help' | 'scanner' | 'arrow-back' | 'expand-more';
 
   export let size: keyof typeof fs = 'md';
 </script>
@@ -20,5 +20,8 @@
 
   {:else if name === 'arrow-back' }
   <path d="M655-80 255-480l400-400 56 57-343 343 343 343-56 57Z" />
+
+  {:else if name === 'expand-more' }
+  <path d="M480-322 216-586l67-67 197 198 197-197 67 67-264 263Z"/>
   {/if}
 </svg>

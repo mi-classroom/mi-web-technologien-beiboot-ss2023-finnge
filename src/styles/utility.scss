@@ -48,3 +48,22 @@
 .color-primary {
   color: var(--color-primary);
 }
+
+
+/**
+ * Layout
+ */
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+.height-full {
+  height: 100%;
+}
+.width-full {
+  width: 100%;
+}
