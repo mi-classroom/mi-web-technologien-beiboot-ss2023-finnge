@@ -1,13 +1,10 @@
 <script lang="ts">
   import { onMount, tick } from "svelte";
 
-  import type { PageData } from "./$types";
   import * as cookie from "../utils/cookie";
 
   import HeroButton from "../components/HeroButton.svelte";
   import Icon from "../components/Icon.svelte";
-
-  export let data: PageData;
 
   let video: HTMLVideoElement;
 

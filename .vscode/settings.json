@@ -7,4 +7,7 @@
     "ARlebnispfade",
   ],
   "liveServer.settings.root": "/dist",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
 }
