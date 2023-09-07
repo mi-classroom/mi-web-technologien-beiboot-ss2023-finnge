@@ -1,8 +1,8 @@
 env:
   es2021: true
 extends:
-  - plugin:svelte/recommended
   - eslint:recommended
+  - plugin:svelte/recommended
   - plugin:prettier/recommended
 parser: '@typescript-eslint/parser'
 parserOptions:
