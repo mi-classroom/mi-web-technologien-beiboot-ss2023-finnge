@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount, tick } from 'svelte';
+  import { onMount, tick } from "svelte";
 
-  import type { PageData } from './$types';
-  import * as cookie from '../utils/cookie';
+  import type { PageData } from "./$types";
+  import * as cookie from "../utils/cookie";
 
-  import HeroButton from '../components/HeroButton.svelte';
-  import Icon from '../components/Icon.svelte';
+  import HeroButton from "../components/HeroButton.svelte";
+  import Icon from "../components/Icon.svelte";
 
   export let data: PageData;
 
@@ -22,31 +22,34 @@
   }
 
   function startVideo() {
-    cookie.set('has-seen-video', 'true');
+    cookie.set("has-seen-video", "true");
     video.play();
   }
 
-  onMount(async() => {
-    console.log('onMount')
-    const hasSeenVideo = cookie.check('has-seen-video');
+  onMount(async () => {
+    console.log("onMount");
+    const hasSeenVideo = cookie.check("has-seen-video");
 
     await tick();
 
     if (hasSeenVideo) {
-      scrollTo('navigation')
+      scrollTo("navigation");
     }
-  })
-
-
+  });
 </script>
 
 <section>
   <h1><span class="color-primary">AR</span>lebnispfade Oberberg</h1>
   <h2>Oberbergischer Kreis</h2>
 
-
   <div class="vertical-center horizontal-center height-full">
-    <HeroButton type="primary" on:click={() => {scrollTo('video-tutorial'); startVideo()}}>
+    <HeroButton
+      type="primary"
+      on:click={() => {
+        scrollTo("video-tutorial");
+        startVideo();
+      }}
+    >
       Einführung beginnen...
     </HeroButton>
   </div>
@@ -55,32 +58,38 @@
 <section id="video-tutorial">
   <video bind:this={video}>
     <source src="/videos/intro-video.mp4" type="video/mp4" />
-    <track src="/videos/intro-video.vtt" kind="captions" srclang="de" label="Deutsch" />
+    <track
+      src="/videos/intro-video.vtt"
+      kind="captions"
+      srclang="de"
+      label="Deutsch"
+    />
   </video>
   <div class="bottom">
-    <button on:click={() => {scrollTo('navigation')}}>
-      <Icon name="expand-more" size='xxl' />
+    <button
+      on:click={() => {
+        scrollTo("navigation");
+      }}
+    >
+      <Icon name="expand-more" size="xxl" />
     </button>
   </div>
 </section>
 
 <section id="navigation">
-
   <HeroButton type="primary" href="/pfad">
-    <span class="fs-md">Ich will nur ein bisschen</span><br>
+    <span class="fs-md">Ich will nur ein bisschen</span><br />
     stöbern
   </HeroButton>
   <HeroButton type="secondary" href="/start">
-    <span class="fs-md">Ich will die ARlebnisse</span><br>
+    <span class="fs-md">Ich will die ARlebnisse</span><br />
     nutzen
   </HeroButton>
-
 </section>
 
 <style>
-
   :global(body) {
-scroll-snap-type: y mandatory;
+    scroll-snap-type: y mandatory;
   }
 
   h1 {
@@ -91,7 +100,8 @@ scroll-snap-type: y mandatory;
     font-size: var(--fs-xl);
     font-weight: var(--fw-light);
   }
-  section {scroll-snap-align: start;
+  section {
+    scroll-snap-align: start;
     padding: var(--outer-margin);
     height: 100vh;
     position: relative;
@@ -102,7 +112,7 @@ scroll-snap-type: y mandatory;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-lg);
-    background-image: url('/images/aggertalsperre.jpg_667295446.jpg');
+    background-image: url("/images/aggertalsperre.jpg_667295446.jpg");
     background-size: cover;
     background-position: center;
   }
@@ -128,8 +138,8 @@ scroll-snap-type: y mandatory;
     /* position: absolute;
     top: 0;
     left: 0; */
-    width: 100%    !important;
-    height: 80vh   !important;
+    width: 100% !important;
+    height: 80vh !important;
     object-fit: contain;
     object-position: bottom center;
     /* z-index: -1; */

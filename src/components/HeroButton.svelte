@@ -11,23 +11,24 @@
 </script>
 
 {#if href !== ""}
-<a {href} {target} data-type={type} on:click>
-  {#if icon}
-    <Icon name={icon} size="xxl" />
-  {/if}
-  <span class="text"><slot /></span>
-</a>
+  <a {href} {target} data-type={type} on:click>
+    {#if icon}
+      <Icon name={icon} size="xxl" />
+    {/if}
+    <span class="text"><slot /></span>
+  </a>
 {:else}
-<button data-type={type} on:click>
-  {#if icon}
-    <Icon name={icon} size="xxl" />
-  {/if}
-  <span class="text"><slot /></span>
-</button>
+  <button data-type={type} on:click>
+    {#if icon}
+      <Icon name={icon} size="xxl" />
+    {/if}
+    <span class="text"><slot /></span>
+  </button>
 {/if}
 
 <style lang="scss">
-  a, button {
+  a,
+  button {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-xs);

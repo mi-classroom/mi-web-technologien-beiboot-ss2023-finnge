@@ -5,8 +5,6 @@
   import TopBar from "../../components/TopBar.svelte";
 
   export let data: PageData;
-
-
 </script>
 
 <TopBar title="Wie wollen Sie starten?" />

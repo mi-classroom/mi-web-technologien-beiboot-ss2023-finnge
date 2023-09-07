@@ -3,20 +3,21 @@
 
   export let title: string;
 
-  import { page } from '$app/stores';
+  import { page } from "$app/stores";
 
   $: oneDirUp = (() => {
     // Remove trailing slash if it exists
-    const currentURL = !$page.url.href.endsWith('/') ? $page.url.href + '/' : $page.url.href;
+    const currentURL = !$page.url.href.endsWith("/")
+      ? $page.url.href + "/"
+      : $page.url.href;
 
     // Generate the one page up URL
-    return new URL('..', currentURL).href;}
-  )();
-
+    return new URL("..", currentURL).href;
+  })();
 </script>
 
 <header>
-  <a href="{oneDirUp}">
+  <a href={oneDirUp}>
     <Icon name="arrow-back" size="xl" />
   </a>
   <h1>{title}</h1>
@@ -41,5 +42,4 @@
     display: block;
     line-height: 0;
   }
-
 </style>
