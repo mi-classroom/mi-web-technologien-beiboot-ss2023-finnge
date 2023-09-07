@@ -4,3 +4,4 @@
 - [ADR-002: Deployment auf GitHub Pages](002-deployment-github-pages.md)
 - [ADR-003: Debugging mit eruda.js](003-debuggig.md)
 - [ADR-004: SvelteKit als Framework für die Demo-Anwendung](004-sveltekit.md)
+- [ADR-005: ESLint und Prettier als Linting-Tools](005-linting.md)
