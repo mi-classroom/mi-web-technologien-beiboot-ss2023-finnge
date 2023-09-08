@@ -36,7 +36,8 @@ export function distance(point1: GeoPoint, point2: GeoPoint): number {
  * Returns a distance in a nice format. If the distance is less than 1000m,
  * it will be returned in metres. Otherwise it will be returned in kilometres.
  *
- * @param {number} distanceInM
+ * @param {GeoPoint} point1
+ * @param {GeoPoint} point2
  * @returns {string} distance in metres or kilometres
  */
 export function niceDistance(point1: GeoPoint, point2: GeoPoint): string {
