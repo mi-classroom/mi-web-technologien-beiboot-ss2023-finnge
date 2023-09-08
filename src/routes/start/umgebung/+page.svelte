@@ -22,19 +22,52 @@
 </script>
 
 <TopBar title="ARlebnisse in der Nähe" />
+
 <ul>
   {#each arExperienceData as datum}
     <li>
-      {datum.title} ({$hasLiveLocation
-        ? niceDistance(datum.geoLocation, $currentLocation)
-        : "?? km"})
+      <span class="title">{datum.title}</span>
+      <span class="distance"
+        >{$hasLiveLocation
+          ? niceDistance(datum.geoLocation, $currentLocation)
+          : "?? km"}</span
+      >
     </li>
   {/each}
 </ul>
 
-{#if $hasLiveLocation}
-  <p>Latitude: {$currentLocation.latitude}</p>
-  <p>Longitude: {$currentLocation.longitude}</p>
-{:else}
-  <p>Location not available</p>
-{/if}
+<p class="m-t-xxl fs-xs">
+  {#if $hasLiveLocation}
+    Latitude: <span class="ff-mono">{$currentLocation.latitude}</span><br />
+    Longitude: <span class="ff-mono">{$currentLocation.longitude}</span>
+  {:else}
+    Location not available
+  {/if}
+</p>
+
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    padding: var(--spacing-md) var(--outer-margin);
+    border-bottom: 1px solid var(--color-lighter);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  p {
+    padding: var(--spacing-xxs) var(--outer-margin);
+  }
+</style>
