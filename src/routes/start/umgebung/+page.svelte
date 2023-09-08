@@ -45,7 +45,6 @@
   {/if}
 </p>
 
-
 <style>
   ul {
     list-style: none;
