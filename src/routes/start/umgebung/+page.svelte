@@ -24,10 +24,11 @@
 <TopBar title="ARlebnisse in der Nähe" />
 <ul>
   {#each arExperienceData as datum}
-    <li>{datum.title} ({$hasLiveLocation ? niceDistance(
-      datum.geoLocation,
-      $currentLocation
-    ) : '?? km'})</li>
+    <li>
+      {datum.title} ({$hasLiveLocation
+        ? niceDistance(datum.geoLocation, $currentLocation)
+        : "?? km"})
+    </li>
   {/each}
 </ul>
 
