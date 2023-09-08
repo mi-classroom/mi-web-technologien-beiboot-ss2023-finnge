@@ -34,11 +34,11 @@ export function distance(point1: GeoPoint, point2: GeoPoint): number {
 
 /**
  * Returns a distance in a nice format. If the distance is less than 1000m,
- * it will be returned in metres. Otherwise it will be returned in kilometres.
+ * it will be returned in metres. Otherwise it will be returned in kilometers.
  *
  * @param {GeoPoint} point1
  * @param {GeoPoint} point2
- * @returns {string} distance in metres or kilometres
+ * @returns {string} distance in metres or kilometers
  */
 export function niceDistance(point1: GeoPoint, point2: GeoPoint): string {
   const distanceInMeters = distance(point1, point2);
