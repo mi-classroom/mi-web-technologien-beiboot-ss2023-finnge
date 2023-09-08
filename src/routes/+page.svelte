@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { onMount, tick } from "svelte";
 
   import * as cookie from "../utils/cookie";
@@ -54,9 +55,9 @@
 
 <section id="video-tutorial">
   <video bind:this={video}>
-    <source src="/videos/intro-video.mp4" type="video/mp4" />
+    <source src="{base}/videos/intro-video.mp4" type="video/mp4" />
     <track
-      src="/videos/intro-video.vtt"
+      src="{base}/videos/intro-video.vtt"
       kind="captions"
       srclang="de"
       label="Deutsch"
