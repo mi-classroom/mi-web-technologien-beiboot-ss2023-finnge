@@ -21,6 +21,7 @@ const config = {
 		alias: {
 			'@': './src',
 			'@data': './src/_data',
+			'@stores': './src/_stores',
 		}
 	}
 };
