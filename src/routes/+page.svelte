@@ -74,7 +74,10 @@
   </div>
 </section>
 
-<section id="navigation" style="--background-image: url({base}/images/aggertalsperre.jpg_667295446.jpg)">
+<section
+  id="navigation"
+  style="--background-image: url({base}/images/aggertalsperre.jpg_667295446.jpg)"
+>
   <HeroButton type="primary" href="{base}/pfad">
     <span class="fs-md">Ich will nur ein bisschen</span><br />
     stöbern
