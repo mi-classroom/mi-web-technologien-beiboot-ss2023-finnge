@@ -18,6 +18,11 @@ const config = {
 		paths: {
       base: dev ? '' : process.env.BASE_PATH,
   	},
+		alias: {
+			'@': './src',
+			'@data': './src/_data',
+			'@stores': './src/_stores',
+		}
 	}
 };
 
