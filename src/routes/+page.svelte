@@ -75,11 +75,11 @@
 </section>
 
 <section id="navigation">
-  <HeroButton type="primary" href="/pfad">
+  <HeroButton type="primary" href="{base}/pfad">
     <span class="fs-md">Ich will nur ein bisschen</span><br />
     stöbern
   </HeroButton>
-  <HeroButton type="secondary" href="/start">
+  <HeroButton type="secondary" href="{base}/start">
     <span class="fs-md">Ich will die ARlebnisse</span><br />
     nutzen
   </HeroButton>
@@ -110,7 +110,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-lg);
-    background-image: url("/images/aggertalsperre.jpg_667295446.jpg");
+    background-image: url("{base}/images/aggertalsperre.jpg_667295446.jpg");
     background-size: cover;
     background-position: center;
   }
