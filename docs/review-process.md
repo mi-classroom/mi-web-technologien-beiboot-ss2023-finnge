@@ -18,13 +18,14 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
 
 * The author of the pull request MUST be marked as assignee
 * Each pull request to the `main` branch MUST be reviewed by at least one person
-  * The person reviewing MUST NOT be the author of the pull request 
+  * The person reviewing MUST NOT be the author of the pull request
   * The person reviewing SHOULD NOT be author of any new commits to be merged
 * The title of the pull request MUST confirm to conventional commits[^cc].
 * The description of the pull request MAY include detailed description of changes and their implications
 * The reviewer MUST approve the changes or request changes to the code base
   * The author MAY implement the requested changes
 * The author MUST **merge** or **squash** the requested changes to the specified branch
-
+* The author MUST **delete** the branch after merging or squashing the changes
+* The author CAN ONLY merge or squash the changes if automated checks are successful
 
 [^cc]: https://www.conventionalcommits.org/en/v1.0.0/

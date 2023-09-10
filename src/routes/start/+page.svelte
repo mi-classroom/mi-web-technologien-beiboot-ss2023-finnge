@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
+  import { base } from "$app/paths";
 
   import HeroButton from "../../components/HeroButton.svelte";
   import TopBar from "../../components/TopBar.svelte";
@@ -14,7 +15,7 @@
     ARlebnisse in der Umgebung anzeigen
   </HeroButton>
 
-  <HeroButton type="primary" href="/arlebnis" icon="scanner">
+  <HeroButton type="primary" href="{base}/arlebnis" icon="scanner">
     ARlebnis via QR Code Scan starten
   </HeroButton>
 
