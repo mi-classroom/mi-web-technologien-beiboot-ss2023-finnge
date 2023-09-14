@@ -16,19 +16,16 @@
   import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
   import { onMount } from "svelte";
 
-  import TopBar from "@/components/TopBar.svelte";
+  import eruda from "eruda";
+
   import { base } from "$app/paths";
+
+  import TopBar from "@/components/TopBar.svelte";
 
   let canvasElement: HTMLCanvasElement;
   let audioElement: HTMLAudioElement;
 
   const scene = new Scene();
-  const camera = new PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000,
-  );
 
   // Lighting
   const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
@@ -53,7 +50,6 @@
 
   // Audio
   const listener = new AudioListener();
-  camera.add(listener);
   const sound = new PositionalAudio(listener);
   sound.setRefDistance(1);
   sound.setDirectionalCone(180, 230, 0.1);
@@ -64,6 +60,19 @@
   let firstTimePlaying = true;
 
   onMount(() => {
+    // Debug
+    eruda.init({
+      tool: ["console", "networt", "elements"],
+    })
+
+    // Camera
+    const camera = new PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+
     // Rendering
     const renderer = new WebGLRenderer({ canvas: canvasElement });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -80,6 +89,7 @@
     scene.add(controller);
 
     // Audio
+    camera.add(listener);
     sound.setMediaElementSource(audioElement);
 
     // Animation
