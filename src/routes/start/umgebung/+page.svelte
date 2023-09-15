@@ -31,7 +31,7 @@
 <TopBar title="ARlebnisse in der Nähe" />
 
 <ul>
-  {#each sortedArExperienceData as datum}
+  {#each sortedArExperienceData as datum (datum.id)}
     <li>
       <span class="title">{datum.title}</span>
       <span class="distance"
