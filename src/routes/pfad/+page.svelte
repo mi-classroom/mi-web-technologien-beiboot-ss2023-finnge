@@ -40,14 +40,15 @@
     width: 100%;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.8) 30%,      rgba(0, 0, 0, 0)
+      rgba(0, 0, 0, 0.8) 30%,
+      rgba(0, 0, 0, 0)
     );
     position: absolute;
     bottom: 0;
     left: 0;
   }
 
-  li .title{
+  li .title {
     font-size: var(--fs-xl);
     font-weight: var(--fw-normal);
     z-index: 1;
