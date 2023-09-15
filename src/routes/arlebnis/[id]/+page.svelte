@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import {
     Scene,
     PerspectiveCamera,
@@ -14,16 +15,21 @@
   } from "three";
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
   import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
-  import { onMount } from "svelte";
-  import type { PageData } from './$types';
-
-  export let data: PageData;
-
   import eruda from "eruda";
 
+  import type { PageData } from "./$types";
   import { base } from "$app/paths";
 
   import TopBar from "@/components/TopBar.svelte";
+  import {
+    currentLocation,
+    hasLiveLocation,
+    startLocationWatch,
+    stopLocationWatch,
+  } from "@stores/location";
+  import { niceDistance } from "@/utils/geoCoords";
+
+  export let data: PageData;
 
   let canvasElement: HTMLCanvasElement;
   let audioElement: HTMLAudioElement;
@@ -145,9 +151,13 @@
       renderer.render(scene, camera);
     });
 
+    // Location
+    startLocationWatch();
+
     return () => {
       renderer.clear();
       renderer.dispose();
+      stopLocationWatch();
     };
   });
 
@@ -165,16 +175,24 @@
 </script>
 
 <div class="wrapper">
-  <TopBar title="{data.title ?? 'ARlebnis'}" />
+  <TopBar title={data.title ?? "ARlebnis"} />
 
   <audio bind:this={audioElement} loop preload="auto" style="display: none">
     <source src="{base}/media/audio.mp3" type="audio/mpeg" />
   </audio>
 
+  {#if $hasLiveLocation && data.geoLocation}
+    <p class="m-x-m">
+      Du bist noch {niceDistance(data.geoLocation, $currentLocation)} von dem ARlebnis
+      entfernt.
+    </p>
+  {/if}
+
   <div class="height-full">
     <canvas bind:this={canvasElement} />
   </div>
 </div>
+
 <style>
   .wrapper {
     background-color: var(--color-darkest);
