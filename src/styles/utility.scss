@@ -1,0 +1,94 @@
+@use "sass:list";
+
+/**
+ * Fonts
+ */
+.ff-sans {
+  font-family: var(--ff-sans);
+}
+.ff-mono {
+  font-family: var(--ff-mono);
+}
+
+.fw-normal {
+  font-weight: var(--fw-normal);
+}
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
+/**
+ * Font sizes
+ */
+.fs-xxs {
+  font-size: var(--fs-xxs);
+}
+.fs-xs {
+  font-size: var(--fs-xs);
+}
+.fs-sm {
+  font-size: var(--fs-sm);
+}
+.fs-md {
+  font-size: var(--fs-md);
+}
+.fs-lg {
+  font-size: var(--fs-lg);
+}
+.fs-xl {
+  font-size: var(--fs-xl);
+}
+.fs-xxl {
+  font-size: var(--fs-xxl);
+}
+
+/**
+ * Color
+ */
+.color-primary {
+  color: var(--color-primary);
+}
+
+
+/**
+ * Layout
+ */
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+.height-full {
+  height: 100%;
+}
+.width-full {
+  width: 100%;
+}
+
+/**
+ * Spacing
+ */
+.m-t-xxs {
+  margin-top: var(--spacing-xxs);
+}
+.m-t-xs {
+  margin-top: var(--spacing-xs);
+}
+.m-t-sm {
+  margin-top: var(--spacing-sm);
+}
+.m-t-md {
+  margin-top: var(--spacing-md);
+}
+.m-t-lg {
+  margin-top: var(--spacing-lg);
+}
+.m-t-xl {
+  margin-top: var(--spacing-xl);
+}
+.m-t-xxl {
+  margin-top: var(--spacing-xxl);
+}
