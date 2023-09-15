@@ -83,9 +83,15 @@
     );
 
     // Rendering
+    const gl = canvasElement.getContext("webgl", {
+      xrCompatible: true,
+    });
+    if (!gl) {
+      throw new Error("WebGL not supported");
+    }
     const renderer = new WebGLRenderer({
       canvas: canvasElement,
-      antialias: true,
+      context: gl,
       alpha: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -93,7 +99,11 @@
     renderer.xr.enabled = true;
 
     canvasElement.after(
-      ARButton.createButton(renderer, { requiredFeatures: ["hit-test"] }),
+      ARButton.createButton(renderer, {
+        requiredFeatures: ["hit-test"],
+        optionalFeatures: ["dom-overlay"],
+        domOverlay: { root: document.body },
+      }),
     );
 
     // Select
@@ -126,6 +136,9 @@
         session.addEventListener("end", function () {
           hitTestSourceRequested = false;
           hitTestSource = undefined;
+
+          // Refresh the page
+          location.reload();
         });
 
         hitTestSourceRequested = true;
@@ -175,18 +188,16 @@
 </script>
 
 <div class="wrapper">
-  <TopBar title={data.title ?? "ARlebnis"} />
+  <TopBar
+    title={(data.title ?? "ARlebnis") +
+      ($hasLiveLocation && data.geoLocation
+        ? " (" + niceDistance(data.geoLocation, $currentLocation) + " entfernt)"
+        : "")}
+  />
 
   <audio bind:this={audioElement} loop preload="auto" style="display: none">
     <source src="{base}/media/audio.mp3" type="audio/mpeg" />
   </audio>
-
-  {#if $hasLiveLocation && data.geoLocation}
-    <p class="m-x-m">
-      Du bist noch {niceDistance(data.geoLocation, $currentLocation)} von dem ARlebnis
-      entfernt.
-    </p>
-  {/if}
 
   <div class="height-full">
     <canvas bind:this={canvasElement} />
@@ -197,5 +208,9 @@
   .wrapper {
     background-color: var(--color-darkest);
     color: var(--color-lighter);
+  }
+
+  canvas {
+    display: block;
   }
 </style>
