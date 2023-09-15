@@ -36,7 +36,8 @@
       <span class="title">{datum.title}</span>
       <span class="distance"
         >{$hasLiveLocation
-          ? niceDistance(datum.geoLocation, $currentLocation) : "?? km"}</span
+          ? niceDistance(datum.geoLocation, $currentLocation)
+          : "?? km"}</span
       >
     </li>
   {/each}
