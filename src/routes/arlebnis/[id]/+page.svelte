@@ -15,6 +15,9 @@
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
   import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
   import { onMount } from "svelte";
+  import type { PageData } from './$types';
+
+  export let data: PageData;
 
   import eruda from "eruda";
 
@@ -161,18 +164,19 @@
   }
 </script>
 
-<TopBar title="Test ARlebnis" />
+<div class="wrapper">
+  <TopBar title="{data.title ?? 'ARlebnis'}" />
 
-<audio bind:this={audioElement} loop preload="auto" style="display: none">
-  <source src="{base}/media/audio.mp3" type="audio/mpeg" />
-</audio>
+  <audio bind:this={audioElement} loop preload="auto" style="display: none">
+    <source src="{base}/media/audio.mp3" type="audio/mpeg" />
+  </audio>
 
-<div class="height-full">
-  <canvas bind:this={canvasElement} />
+  <div class="height-full">
+    <canvas bind:this={canvasElement} />
+  </div>
 </div>
-
 <style>
-  :global(body) {
+  .wrapper {
     background-color: var(--color-darkest);
     color: var(--color-lighter);
   }
