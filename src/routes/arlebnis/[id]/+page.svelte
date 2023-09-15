@@ -63,7 +63,7 @@
     // Debug
     eruda.init({
       tool: ["console", "networt", "elements"],
-    })
+    });
 
     // Camera
     const camera = new PerspectiveCamera(
@@ -74,7 +74,11 @@
     );
 
     // Rendering
-    const renderer = new WebGLRenderer({ canvas: canvasElement });
+    const renderer = new WebGLRenderer({
+      canvas: canvasElement,
+      antialias: true,
+      alpha: true,
+    });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.xr.enabled = true;
@@ -170,6 +174,6 @@
 <style>
   :global(body) {
     background-color: var(--color-darkest);
-    color: var(--color-lighter)
+    color: var(--color-lighter);
   }
 </style>
