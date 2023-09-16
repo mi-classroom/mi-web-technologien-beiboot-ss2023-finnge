@@ -30,7 +30,6 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-lg) var(--outer-margin);
-    background-color: var(--color-lightest);
   }
 
   h1 {
@@ -41,5 +40,6 @@
   a {
     display: block;
     line-height: 0;
+    color: inherit;
   }
 </style>
