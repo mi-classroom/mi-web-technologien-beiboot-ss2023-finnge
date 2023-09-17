@@ -55,9 +55,9 @@
 
 <section id="video-tutorial">
   <video bind:this={video}>
-    <source src="{base}/videos/intro-video.mp4" type="video/mp4" />
+    <source src="{base}/media/intro-video.mp4" type="video/mp4" />
     <track
-      src="{base}/videos/intro-video.vtt"
+      src="{base}/media/intro-video.vtt"
       kind="captions"
       srclang="de"
       label="Deutsch"
@@ -110,7 +110,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-lg);
-    background-image: url("{base}/images/aggertalsperre.jpg_667295446.jpg");
+    background-image: url("images/aggertalsperre.jpg_667295446.jpg");
     background-size: cover;
     background-position: center;
   }

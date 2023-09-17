@@ -6,6 +6,7 @@
     startLocationWatch,
     stopLocationWatch,
   } from "@stores/location";
+  import { base } from "$app/paths";
 
   import { niceDistance, distance } from "@/utils/geoCoords";
 
@@ -33,7 +34,7 @@
 <ul>
   {#each sortedArExperienceData as datum (datum.id)}
     <li>
-      <span class="title">{datum.title}</span>
+      <a class="title" href="{base}/arlebnis/{datum.id}">{datum.title}</a>
       <span class="distance"
         >{$hasLiveLocation
           ? niceDistance(datum.geoLocation, $currentLocation)
