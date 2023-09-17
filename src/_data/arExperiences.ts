@@ -1,4 +1,9 @@
+import type { ComponentType, SvelteComponent } from "svelte";
+import type { WebGLRenderer } from "three";
+
 import { base } from "$app/paths";
+
+import BergischerLoeweBahnhofBielstein from "@/components/scenes/bergischer-loewe-bahnhof-bielstein.svelte";
 
 type ArExperience = {
   id: string;
@@ -8,6 +13,12 @@ type ArExperience = {
     latitude: number;
     longitude: number;
   };
+  sceneComponent?: ComponentType<
+    SvelteComponent<{
+      canvasElement: HTMLCanvasElement;
+      renderer: WebGLRenderer;
+    }>
+  >;
 };
 
 type ArPath = {
@@ -30,6 +41,7 @@ export const paths: ArPath[] = [
           latitude: 50.96361581592383,
           longitude: 7.503346705784695,
         },
+        sceneComponent: BergischerLoeweBahnhofBielstein,
       },
       {
         title: "Burghaus Bielstein",
