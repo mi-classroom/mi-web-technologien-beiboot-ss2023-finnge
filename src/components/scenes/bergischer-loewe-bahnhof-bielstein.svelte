@@ -1,4 +1,12 @@
 <script lang="ts">
+  /**
+   * This is the AR scene for the Bergischer Löwe in Bielstein.
+   * It is a simple scene with a cylinder and a sound.
+   * The sound is played when the cylinder is selected.
+   * The cylinder is placed on the ground.
+   * The sound is played from the cylinder.
+   */
+
   import { onMount } from "svelte";
   import { base } from "$app/paths";
 
