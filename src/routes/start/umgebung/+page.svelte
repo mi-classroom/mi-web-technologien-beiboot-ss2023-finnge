@@ -8,10 +8,17 @@
   } from "@stores/location";
   import { base } from "$app/paths";
 
-  import { niceDistance } from "@/utils/geoCoords";
+  import { niceDistance, distance } from "@/utils/geoCoords";
 
   import { data as arExperienceData } from "@data/arExperiences";
   import { onMount } from "svelte";
+
+  $: sortedArExperienceData = arExperienceData.sort((a, b) => {
+    const distanceA = distance(a.geoLocation, $currentLocation);
+    const distanceB = distance(b.geoLocation, $currentLocation);
+
+    return distanceA - distanceB;
+  });
 
   onMount(() => {
     startLocationWatch();
@@ -25,7 +32,7 @@
 <TopBar title="ARlebnisse in der Nähe" />
 
 <ul>
-  {#each arExperienceData as datum}
+  {#each sortedArExperienceData as datum (datum.id)}
     <li>
       <a class="title" href="{base}/arlebnis/{datum.id}">{datum.title}</a>
       <span class="distance"
