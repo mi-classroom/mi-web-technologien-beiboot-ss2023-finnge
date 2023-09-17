@@ -4,6 +4,7 @@ import type { WebGLRenderer } from "three";
 import { base } from "$app/paths";
 
 import BergischerLoeweBahnhofBielstein from "@/components/scenes/bergischer-loewe-bahnhof-bielstein.svelte";
+import BurghausBielstein from "@/components/scenes/burghaus-bielstein.svelte";
 
 type ArExperience = {
   id: string;
@@ -50,6 +51,7 @@ export const paths: ArPath[] = [
           latitude: 50.96167839261665,
           longitude: 7.497174889774524,
         },
+        sceneComponent: BurghausBielstein,
       },
 
       {
