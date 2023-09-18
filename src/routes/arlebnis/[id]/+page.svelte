@@ -21,9 +21,7 @@
 
   onMount(() => {
     // Debug
-    eruda.init({
-      tool: ["console", "networt", "elements"],
-    });
+    eruda.init();
 
     // Location
     startLocationWatch();

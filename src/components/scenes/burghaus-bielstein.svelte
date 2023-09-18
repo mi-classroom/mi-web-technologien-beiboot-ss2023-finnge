@@ -1,10 +1,8 @@
 <script lang="ts">
   /**
    * This is the AR scene for the Bergischer Löwe in Bielstein.
-   * It is a simple scene with a cylinder and a sound.
-   * The sound is played when the cylinder is selected.
-   * The cylinder is placed on the ground.
-   * The sound is played from the cylinder.
+   * It places a base object with two cylinders on the ground.
+   * The cylinders play sounds when selected.
    */
 
   import { onMount } from "svelte";
@@ -16,25 +14,30 @@
     HemisphereLight,
     WebGLRenderer,
     Mesh,
+    DodecahedronGeometry,
     RingGeometry,
     MeshBasicMaterial,
     AudioListener,
     PositionalAudio,
-    Group,
+    MeshPhongMaterial,
+    CylinderGeometry,
+    Vector2,
+    Raycaster,
   } from "three";
-  import type { Object3DEventMap } from "three";
+  import type { ColorRepresentation } from "three";
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
   import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
-  import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 
   export let renderer: WebGLRenderer;
+
   export let canvasElement: HTMLCanvasElement;
   let audioElementAmbience: HTMLAudioElement;
   let audioElementIndustry: HTMLAudioElement;
   let audioElementDishwasher: HTMLAudioElement;
+  let camera: PerspectiveCamera;
+  let hasPlacedScene = false;
 
   const scene = new Scene();
-  const loader = new OBJLoader();
 
   // Lighting
   const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
@@ -50,40 +53,42 @@
   reticle.visible = false;
   scene.add(reticle);
 
-  // Load Objects
-  let progress = 0;
-  const numOfLoaders = 2;
-  const loaderOnProgress: Parameters<OBJLoader["load"]>[2] = (xhr) => {
-    const loaded = xhr.loaded / xhr.total;
-    progress += loaded / numOfLoaders;
-  };
-  const loaderOnError: Parameters<OBJLoader["load"]>[3] = (error) => {
-    console.error(error);
+  // Objects
+  const objectBase = new Mesh(
+    new DodecahedronGeometry(0.1, 0).translate(0, 0.1, 0),
+    new MeshPhongMaterial({ color: 0xff7eb6 }),
+  );
+  objectBase.visible = false;
+  scene.add(objectBase);
+
+  type ObjectColorMap = {
+    normal: ColorRepresentation;
+    active: ColorRepresentation;
   };
 
-  let objectDishwasher: Group<Object3DEventMap>;
-  loader.load(
-    `${base}/media/models/11636_Diswasher_v1_L3.obj`,
-    (object) => {
-      objectDishwasher = object;
-      objectDishwasher.visible = false;
-      scene.add(objectDishwasher);
-    },
-    loaderOnProgress,
-    loaderOnError,
+  const objectDishwasherColor: ObjectColorMap = {
+    normal: 0x6929c4,
+    active: 0x31135e,
+  };
+  const objectDishwasher = new Mesh(
+    new CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0),
+    new MeshPhongMaterial({ color: objectDishwasherColor.normal }),
   );
+  objectDishwasher.visible = false;
+  objectDishwasher.position.x = 1;
+  objectBase.add(objectDishwasher);
 
-  let objectIndustry: Group<Object3DEventMap>;
-  loader.load(
-    `${base}/media/models/OBJ_Robot.obj`,
-    (object) => {
-      objectIndustry = object;
-      objectIndustry.visible = false;
-      scene.add(objectIndustry);
-    },
-    loaderOnProgress,
-    loaderOnError,
+  const objectIndustryColor: ObjectColorMap = {
+    normal: 0x005d5d,
+    active: 0x022b30,
+  };
+  const objectIndustry = new Mesh(
+    new CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0),
+    new MeshPhongMaterial({ color: objectIndustryColor.normal }),
   );
+  objectIndustry.visible = false;
+  objectIndustry.position.x = -1;
+  objectBase.add(objectIndustry);
 
   // Audio
   const listener = new AudioListener();
@@ -101,7 +106,7 @@
 
   onMount(() => {
     // Camera
-    const camera = new PerspectiveCamera(
+    camera = new PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
@@ -171,7 +176,7 @@
         hitTestSourceRequested = true;
       }
 
-      if (hitTestSource && referenceSpace) {
+      if (hitTestSource && referenceSpace && !hasPlacedScene) {
         const hitTestResults = frame.getHitTestResults(hitTestSource);
 
         if (hitTestResults.length) {
@@ -191,6 +196,41 @@
       renderer.render(scene, camera);
     });
 
+    // Interaction
+    const mouseVector = new Vector2();
+    const raycaster = new Raycaster();
+    renderer.domElement.addEventListener("click", (e) => {
+      mouseVector.x = 2 * (e.clientX / renderer.domElement.clientWidth) - 1;
+      mouseVector.y = 1 - 2 * (e.clientY / renderer.domElement.clientHeight);
+      raycaster.setFromCamera(mouseVector, camera);
+      const intersects = raycaster.intersectObjects(scene.children);
+
+      for (let i = 0; i < intersects.length; i++) {
+        const intersection = intersects[i];
+
+        switch (intersection.object.uuid) {
+          case objectDishwasher.uuid:
+            if (audioElementDishwasher.paused) {
+              audioElementDishwasher.play();
+              objectDishwasher.material.color.set(objectDishwasherColor.active);
+            } else {
+              audioElementDishwasher.pause();
+              objectDishwasher.material.color.set(objectDishwasherColor.normal);
+            }
+            break;
+          case objectIndustry.uuid:
+            if (audioElementIndustry.paused) {
+              audioElementIndustry.play();
+              objectIndustry.material.color.set(objectIndustryColor.active);
+            } else {
+              audioElementIndustry.pause();
+              objectIndustry.material.color.set(objectIndustryColor.normal);
+            }
+            break;
+        }
+      }
+    });
+
     return () => {
       renderer.clear();
       renderer.dispose();
@@ -198,47 +238,50 @@
   });
 
   function onSelect() {
+    if (hasPlacedScene) {
+      return;
+    }
+
     if (reticle.visible) {
+      hasPlacedScene = true;
       reticle.visible = false;
       if (firstTimePlaying) {
         firstTimePlaying = false;
         soundDishwasher.play();
       }
+
+      objectBase.visible = true;
       objectDishwasher.visible = true;
       objectDishwasher.add(soundDishwasher);
+      objectIndustry.visible = true;
+      objectIndustry.add(soundIndustry);
+
+      // place base object on the ground facing the camera
       reticle.matrix.decompose(
-        objectDishwasher.position,
-        objectDishwasher.quaternion,
-        objectDishwasher.scale,
+        objectBase.position,
+        objectBase.quaternion,
+        objectBase.scale,
       );
     }
   }
 </script>
 
 <audio
-  autoplay
   loop
   volume="0.5"
   bind:this={audioElementAmbience}
-  src={`${base}/media/audio/birds-singing-calm-river-nature-ambient-sound-127411.mp3`}
+  src={`${base}/media/sounds/birds-singing-calm-river-nature-ambient-sound-127411.mp3`}
 />
 <audio
   bind:this={audioElementIndustry}
-  src={`${base}/media/audio/industrial-sounds-25817.mp3`}
+  src={`${base}/media/sounds/industrial-sounds-25817.mp3`}
 />
 <audio
   bind:this={audioElementDishwasher}
-  src={`${base}/media/audio/dishwasher-running-160643.mp3`}
+  src={`${base}/media/sounds/dishwasher-running-160643.mp3`}
 />
 
-{#if progress < 1}
-  <div class="centered">
-    <progress value={progress} max="1" />
-  </div>
-{/if}
-
 <canvas bind:this={canvasElement}></canvas>
-
 
 <style>
   canvas {
