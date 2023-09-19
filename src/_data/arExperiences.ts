@@ -1,4 +1,12 @@
+import type { ComponentType, SvelteComponent } from "svelte";
+import type { WebGLRenderer } from "three";
+
 import { base } from "$app/paths";
+
+import BergischerLoeweBahnhofBielstein from "@/components/scenes/bergischer-loewe-bahnhof-bielstein.svelte";
+import BurghausBielstein from "@/components/scenes/burghaus-bielstein.svelte";
+import StBonifatiusKriegsgeschichte from "@/components/scenes/st-bonifatius-kriegsgeschichte.svelte";
+import StrasseDerArbeitSteinbrecheWeiershagen from "@/components/scenes/strasse-der-arbeit-steinbreche-weiershagen.svelte";
 
 type ArExperience = {
   id: string;
@@ -8,6 +16,13 @@ type ArExperience = {
     latitude: number;
     longitude: number;
   };
+  sceneComponent?: ComponentType<
+    SvelteComponent<{
+      canvasElement: HTMLCanvasElement;
+      renderer: WebGLRenderer;
+      init?: () => () => void;
+    }>
+  >;
 };
 
 type ArPath = {
@@ -30,6 +45,7 @@ export const paths: ArPath[] = [
           latitude: 50.96361581592383,
           longitude: 7.503346705784695,
         },
+        sceneComponent: BergischerLoeweBahnhofBielstein,
       },
       {
         title: "Burghaus Bielstein",
@@ -38,6 +54,7 @@ export const paths: ArPath[] = [
           latitude: 50.96167839261665,
           longitude: 7.497174889774524,
         },
+        sceneComponent: BurghausBielstein,
       },
 
       {
@@ -47,6 +64,7 @@ export const paths: ArPath[] = [
           latitude: 50.96292054689792,
           longitude: 7.49541172547757,
         },
+        sceneComponent: StBonifatiusKriegsgeschichte,
       },
     ],
   },
@@ -62,6 +80,7 @@ export const paths: ArPath[] = [
           latitude: 50.97183894790319, // Koordinate ungewiss
           longitude: 7.489192933339773, // Koordinate ungewiss
         },
+        sceneComponent: StrasseDerArbeitSteinbrecheWeiershagen,
       },
       {
         title: "Eisenbahnbrücke an der Mühle",

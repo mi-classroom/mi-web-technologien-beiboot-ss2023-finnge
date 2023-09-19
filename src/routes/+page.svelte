@@ -61,6 +61,7 @@
       kind="captions"
       srclang="de"
       label="Deutsch"
+      default
     />
   </video>
   <div class="bottom">
