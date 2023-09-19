@@ -29,7 +29,6 @@
   export let renderer: WebGLRenderer;
 
   export let canvasElement: HTMLCanvasElement;
-  let audioElementAmbience: HTMLAudioElement;
   let audioElementIndustry: HTMLAudioElement;
   let audioElementDishwasher: HTMLAudioElement;
   let camera: PerspectiveCamera;
@@ -235,12 +234,6 @@
   }
 </script>
 
-<audio
-  loop
-  volume="0.5"
-  bind:this={audioElementAmbience}
-  src={`${base}/media/sounds/birds-singing-calm-river-nature-ambient-sound-127411.mp3`}
-/>
 <audio
   loop
   bind:this={audioElementIndustry}
