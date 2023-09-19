@@ -74,7 +74,7 @@
     new MeshPhongMaterial({ color: objectDishwasherColor.normal }),
   );
   objectDishwasher.visible = false;
-  objectDishwasher.position.x = 1;
+  objectDishwasher.position.x = 3;
   objectBase.add(objectDishwasher);
 
   const objectIndustryColor: ObjectColorMap = {
@@ -86,7 +86,7 @@
     new MeshPhongMaterial({ color: objectIndustryColor.normal }),
   );
   objectIndustry.visible = false;
-  objectIndustry.position.x = -1;
+  objectIndustry.position.x = -3;
   objectBase.add(objectIndustry);
 
   // Audio
@@ -267,10 +267,13 @@
   src={`${base}/media/sounds/birds-singing-calm-river-nature-ambient-sound-127411.mp3`}
 />
 <audio
+  loop
   bind:this={audioElementIndustry}
   src={`${base}/media/sounds/industrial-sounds-25817.mp3`}
 />
 <audio
+  loop
+  volume="0.6"
   bind:this={audioElementDishwasher}
   src={`${base}/media/sounds/dishwasher-running-160643.mp3`}
 />
