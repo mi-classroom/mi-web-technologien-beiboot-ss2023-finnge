@@ -104,7 +104,7 @@
 
   let firstTimePlaying = true;
 
-  onMount(() => {
+  export function init () {
     // Camera
     camera = new PerspectiveCamera(
       75,
@@ -114,15 +114,8 @@
     );
 
     // Rendering
-    const gl = canvasElement.getContext("webgl", {
-      xrCompatible: true,
-    });
-    if (!gl) {
-      throw new Error("WebGL not supported");
-    }
     renderer = new WebGLRenderer({
       canvas: canvasElement,
-      context: gl,
       alpha: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -137,15 +130,65 @@
       }),
     );
 
+    console.log('After ARButton.createButton')
+
     // Select
     const controller = renderer.xr.getController(0);
     controller.addEventListener("select", onSelect);
     scene.add(controller);
 
+    console.log('After controller.addEventListener')
+
     // Audio
     camera.add(listener);
     soundDishwasher.setMediaElementSource(audioElementDishwasher);
     soundIndustry.setMediaElementSource(audioElementIndustry);
+
+    console.log('After setMediaElementSource')
+
+
+    // Interaction
+    const mouseVector = new Vector2();
+    const raycaster = new Raycaster();
+
+    console.log(renderer.domElement);
+
+    renderer.domElement.addEventListener("click", (e) => {
+      console.log(e.clientX, e.clientY);
+      mouseVector.x = 2 * (e.clientX / renderer.domElement.clientWidth) - 1;
+      mouseVector.y = 1 - 2 * (e.clientY / renderer.domElement.clientHeight);
+      raycaster.setFromCamera(mouseVector, camera);
+      const intersects = raycaster.intersectObjects(scene.children);
+
+      for (let i = 0; i < intersects.length; i++) {
+        const intersection = intersects[i];
+
+        console.log(intersection.object.uuid, objectDishwasher.uuid, objectIndustry.uuid);
+
+        switch (intersection.object.uuid) {
+          case objectDishwasher.uuid:
+            if (audioElementDishwasher.paused) {
+              audioElementDishwasher.play();
+              objectDishwasher.material.color.set(objectDishwasherColor.active);
+            } else {
+              audioElementDishwasher.pause();
+              objectDishwasher.material.color.set(objectDishwasherColor.normal);
+            }
+            break;
+          case objectIndustry.uuid:
+            if (audioElementIndustry.paused) {
+              audioElementIndustry.play();
+              objectIndustry.material.color.set(objectIndustryColor.active);
+            } else {
+              audioElementIndustry.pause();
+              objectIndustry.material.color.set(objectIndustryColor.normal);
+            }
+            break;
+        }
+      }
+    });
+
+    console.log('After renderer.domElement.addEventListener')
 
     // Animation
     let hitTestSource: XRHitTestSource | undefined = undefined;
@@ -196,46 +239,13 @@
       renderer.render(scene, camera);
     });
 
-    // Interaction
-    const mouseVector = new Vector2();
-    const raycaster = new Raycaster();
-    renderer.domElement.addEventListener("click", (e) => {
-      mouseVector.x = 2 * (e.clientX / renderer.domElement.clientWidth) - 1;
-      mouseVector.y = 1 - 2 * (e.clientY / renderer.domElement.clientHeight);
-      raycaster.setFromCamera(mouseVector, camera);
-      const intersects = raycaster.intersectObjects(scene.children);
-
-      for (let i = 0; i < intersects.length; i++) {
-        const intersection = intersects[i];
-
-        switch (intersection.object.uuid) {
-          case objectDishwasher.uuid:
-            if (audioElementDishwasher.paused) {
-              audioElementDishwasher.play();
-              objectDishwasher.material.color.set(objectDishwasherColor.active);
-            } else {
-              audioElementDishwasher.pause();
-              objectDishwasher.material.color.set(objectDishwasherColor.normal);
-            }
-            break;
-          case objectIndustry.uuid:
-            if (audioElementIndustry.paused) {
-              audioElementIndustry.play();
-              objectIndustry.material.color.set(objectIndustryColor.active);
-            } else {
-              audioElementIndustry.pause();
-              objectIndustry.material.color.set(objectIndustryColor.normal);
-            }
-            break;
-        }
-      }
-    });
+    console.log('After renderer.setAnimationLoop')
 
     return () => {
       renderer.clear();
       renderer.dispose();
     };
-  });
+  };
 
   function onSelect() {
     if (hasPlacedScene) {
@@ -265,6 +275,8 @@
     }
   }
 </script>
+
+<!-- <svelte:window on:load={onWindowLoad} /> -->
 
 <audio
   loop

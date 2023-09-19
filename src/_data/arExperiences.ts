@@ -18,6 +18,7 @@ type ArExperience = {
     SvelteComponent<{
       canvasElement: HTMLCanvasElement;
       renderer: WebGLRenderer;
+      init?: () => () => void;
     }>
   >;
 };

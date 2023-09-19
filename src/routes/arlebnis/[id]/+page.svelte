@@ -18,16 +18,25 @@
 
   let renderer: WebGLRenderer;
   let canvasElement: HTMLCanvasElement;
+  let init: (() => () => void) | undefined;
 
   onMount(() => {
+    console.log("ARlebnis page mounted");
+
     // Debug
     eruda.init();
+
+    console.log("after eruda.init()");
+
+    // Renderer
+    const onUnMount = init ? init() : () => {};
 
     // Location
     startLocationWatch();
 
     return () => {
       stopLocationWatch();
+      onUnMount();
     };
   });
 </script>
@@ -44,6 +53,7 @@
     this={data.sceneComponent}
     bind:renderer
     bind:canvasElement
+    bind:init
   />
 
   {#if data.sceneComponent === undefined}

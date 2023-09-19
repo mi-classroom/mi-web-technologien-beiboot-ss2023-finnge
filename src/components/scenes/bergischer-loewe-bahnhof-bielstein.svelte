@@ -64,7 +64,7 @@
 
   let firstTimePlaying = true;
 
-  onMount(() => {
+  export const init = () => {
     // Camera
     const camera = new PerspectiveCamera(
       75,
@@ -159,7 +159,7 @@
       renderer.clear();
       renderer.dispose();
     };
-  });
+  };
 
   function onSelect() {
     if (reticle.visible) {
