@@ -32,7 +32,7 @@ Es wurden mehrere AR-Anwendungen implementiert. Über die folgenden QR-Codes, di
 
 | QR-Code | Beschreibung |
 | --- | --- |
-| ![QR-Code](./docs/images/qr-codes/bergischer-loewe-bahnhof-bielstein.png) | **Bergische Löwe Bahnhof Bielstein** \ Spatial Sound mit einem Zylinder. |
-| ![QR-Code](./docs/images/qr-codes/burghaus-bielstein.png) | **Burghaus Bielstein** \ Spatial Sound mit zwei Zylindern. Der Sound kann einzeln an und aus geschaltet werden. |
-| ![QR-Code](./docs/images/qr-codes/st-bonifatius-kriegsgeschichte.png) | **St. Bonifatius Kriegsgeschichte** \ Platzierung eines Pfades mit Hilfe von Knoten und Linien. |
-| ![QR-Code](./docs/images/qr-codes/strasse-der-arbeit-steinbreche-weiershagen.png) | **"Straße der Arbeit" Steinbreche Weiershagen** \ 3D-Video mit Interaktionsmöglichkeit zum Starten und Stoppen. |
+| ![QR-Code](./docs/images/qr-codes/bergischer-loewe-bahnhof-bielstein.png) | **Bergische Löwe Bahnhof Bielstein** <br> Spatial Sound mit einem Zylinder. |
+| ![QR-Code](./docs/images/qr-codes/burghaus-bielstein.png) | **Burghaus Bielstein** <br> Spatial Sound mit zwei Zylindern. Der Sound kann einzeln an und aus geschaltet werden. |
+| ![QR-Code](./docs/images/qr-codes/st-bonifatius-kriegsgeschichte.png) | **St. Bonifatius Kriegsgeschichte** <br> Platzierung eines Pfades mit Hilfe von Knoten und Linien. |
+| ![QR-Code](./docs/images/qr-codes/strasse-der-arbeit-steinbreche-weiershagen.png) | **"Straße der Arbeit" Steinbreche Weiershagen** <br> 3D-Video mit Interaktionsmöglichkeit zum Starten und Stoppen. |
