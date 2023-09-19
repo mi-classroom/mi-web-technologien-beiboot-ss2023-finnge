@@ -21,12 +21,8 @@
   let init: (() => () => void) | undefined;
 
   onMount(() => {
-    console.log("ARlebnis page mounted");
-
     // Debug
     eruda.init();
-
-    console.log("after eruda.init()");
 
     // Renderer
     const onUnMount = init ? init() : () => {};

@@ -5,7 +5,6 @@
    * The cylinders play sounds when selected.
    */
 
-  import { onMount } from "svelte";
   import { base } from "$app/paths";
 
   import {
@@ -104,7 +103,7 @@
 
   let firstTimePlaying = true;
 
-  export function init () {
+  export function init() {
     // Camera
     camera = new PerspectiveCamera(
       75,
@@ -130,31 +129,22 @@
       }),
     );
 
-    console.log('After ARButton.createButton')
-
     // Select
     const controller = renderer.xr.getController(0);
     controller.addEventListener("select", onSelect);
     scene.add(controller);
-
-    console.log('After controller.addEventListener')
 
     // Audio
     camera.add(listener);
     soundDishwasher.setMediaElementSource(audioElementDishwasher);
     soundIndustry.setMediaElementSource(audioElementIndustry);
 
-    console.log('After setMediaElementSource')
-
-
     // Interaction
     const mouseVector = new Vector2();
     const raycaster = new Raycaster();
 
-    console.log(renderer.domElement);
+    document.addEventListener("click", (e) => {
 
-    renderer.domElement.addEventListener("click", (e) => {
-      console.log(e.clientX, e.clientY);
       mouseVector.x = 2 * (e.clientX / renderer.domElement.clientWidth) - 1;
       mouseVector.y = 1 - 2 * (e.clientY / renderer.domElement.clientHeight);
       raycaster.setFromCamera(mouseVector, camera);
@@ -162,8 +152,6 @@
 
       for (let i = 0; i < intersects.length; i++) {
         const intersection = intersects[i];
-
-        console.log(intersection.object.uuid, objectDishwasher.uuid, objectIndustry.uuid);
 
         switch (intersection.object.uuid) {
           case objectDishwasher.uuid:
@@ -187,8 +175,6 @@
         }
       }
     });
-
-    console.log('After renderer.domElement.addEventListener')
 
     // Animation
     let hitTestSource: XRHitTestSource | undefined = undefined;
@@ -239,13 +225,11 @@
       renderer.render(scene, camera);
     });
 
-    console.log('After renderer.setAnimationLoop')
-
     return () => {
       renderer.clear();
       renderer.dispose();
     };
-  };
+  }
 
   function onSelect() {
     if (hasPlacedScene) {
@@ -275,8 +259,6 @@
     }
   }
 </script>
-
-<!-- <svelte:window on:load={onWindowLoad} /> -->
 
 <audio
   loop
