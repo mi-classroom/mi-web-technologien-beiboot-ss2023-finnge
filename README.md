@@ -10,7 +10,7 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 
 - [Proof-of-Concepts](./proof-of-concepts/README.md)
 - [ADRs](./docs/adrs/README.md)
-- [Zeitaufwände](./docs/zeitaufwand.md)
+- [Zeitaufwände mit allg. Doku](./docs/zeitaufwand.md)
 - [Review Process](./docs/review-process.md)
 
 ## Befehle für die Proof-of-Concepts
@@ -26,13 +26,18 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 
 ## Aufgabe 4: Basis-App Anwendung
 
-In der Basis-App anwendung wurden die in den PoCs entwickelten AR-Anwendungen in einen Applikations-Kontext gestellt. In [ADR-004](./docs/adrs/004-sveltekit.md) wurde sich dafür entschieden diese mit SvelteKit umzusetzen. Die Basis Anwendung ist über <<https://mi-classroom.github.io/mi-web-technologien-beiboot-ss2023-finnge> erreichbar.
+> [!IMPORTANT]
+> Die AR-Anwendung können nur auf Smartphones mit Android oder iOS gestartet werden. Auf iOS ist [Mozillas WebXR Viewer](https://apps.apple.com/us/app/webxr-viewer/id1295998056) notwendig. Auf Android ist [Google Chrome](https://play.google.com/store/apps/details?id=com.android.chrome&hl=de&gl=US) notwendig.
+
+In der Basis-App anwendung wurden die in den PoCs entwickelten AR-Anwendungen in einen Applikations-Kontext gestellt. In [ADR-004](./docs/adrs/004-sveltekit.md) wurde sich dafür entschieden diese mit SvelteKit umzusetzen. Die Basis Anwendung ist über <https://mi-classroom.github.io/mi-web-technologien-beiboot-ss2023-finnge> erreichbar.
 
 Es wurden mehrere AR-Anwendungen implementiert. Über die folgenden QR-Codes, die in den Erlebnis-Pfaden ausliegen könnten, wird eine AR-Anwendung gestartet.
 
+Die Basis-Anwendung ist gesondert dokumentiert: [Dokumentation für die Demoanwendung](./docs/demoanwendung.md)
+
 | QR-Code | Beschreibung |
 | --- | --- |
-| ![QR-Code](./docs/qr-codes/bergischer-loewe-bahnhof-bielstein.png) | **Bergische Löwe Bahnhof Bielstein** <br> Spatial Sound mit einem Zylinder. |
-| ![QR-Code](./docs/qr-codes/burghaus-bielstein.png) | **Burghaus Bielstein** <br> Spatial Sound mit zwei Zylindern. Der Sound kann einzeln an und aus geschaltet werden. |
-| ![QR-Code](./docs/qr-codes/st-bonifatius-kriegsgeschichte.png) | **St. Bonifatius Kriegsgeschichte** <br> Platzierung eines Pfades mit Hilfe von Knoten und Linien. |
-| ![QR-Code](./docs/qr-codes/strasse-der-arbeit-steinbreche-weiershagen.png) | **"Straße der Arbeit" Steinbreche Weiershagen** <br> 3D-Video mit Interaktionsmöglichkeit zum Starten und Stoppen. |
+| ![QR-Code](./docs/qr-codes/bergischer-loewe-bahnhof-bielstein.png) | **Bergische Löwe Bahnhof Bielstein** <br> Spatial Sound mit einem Zylinder. <br> [Screenmovie](./docs/demo-screenmovies/bergischer-loewe-bahnhof-bielstein.mov) |
+| ![QR-Code](./docs/qr-codes/burghaus-bielstein.png) | **Burghaus Bielstein** <br> Spatial Sound mit zwei Zylindern. Der Sound kann einzeln an und aus geschaltet werden. <br> [Screenmovie](./docs/demo-screenmovies/burghaus-bielstein.mov) |
+| ![QR-Code](./docs/qr-codes/st-bonifatius-kriegsgeschichte.png) | **St. Bonifatius Kriegsgeschichte** <br> Platzierung eines Pfades mit Hilfe von Knoten und Linien. <br> [Screenmovie](./docs/demo-screenmovies/st-bonifatius-kriegsgeschichte.mov) |
+| ![QR-Code](./docs/qr-codes/strasse-der-arbeit-steinbreche-weiershagen.png) | **"Straße der Arbeit" Steinbreche Weiershagen** <br> 3D-Video mit Interaktionsmöglichkeit zum Starten und Stoppen. <br> [Screenmovie](./docs/demo-screenmovies/strasse-der-arbeit-steinbreche-weiershagen.mov) |
