@@ -13,7 +13,7 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 - [Zeitaufwände mit allg. Doku](./docs/zeitaufwand.md)
 - [Review Process](./docs/review-process.md)
 
-## Befehle
+## Befehle für die Proof-of-Concepts
 
 | Befehl | Beschreibung |
 | --- | --- |
@@ -23,3 +23,16 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 | `make logs` | Zeigt die Logs der Docker Container an |
 | `make tunnel` | Startet einen Tunnel zu localhost:6066 |
 | `make dev` | Startet ein dev Umgebung außerhalb von Docker |
+
+## Aufgabe 4: Basis-App Anwendung
+
+In der Basis-App anwendung wurden die in den PoCs entwickelten AR-Anwendungen in einen Applikations-Kontext gestellt. In [ADR-004](./docs/adrs/004-sveltekit.md) wurde sich dafür entschieden diese mit SvelteKit umzusetzen. Die Basis Anwendung ist über <<https://mi-classroom.github.io/mi-web-technologien-beiboot-ss2023-finnge> erreichbar.
+
+Es wurden mehrere AR-Anwendungen implementiert. Über die folgenden QR-Codes, die in den Erlebnis-Pfaden ausliegen könnten, wird eine AR-Anwendung gestartet.
+
+| QR-Code | Beschreibung |
+| --- | --- |
+| ![QR-Code](./docs/qr-codes/bergischer-loewe-bahnhof-bielstein.png) | **Bergische Löwe Bahnhof Bielstein** <br> Spatial Sound mit einem Zylinder. |
+| ![QR-Code](./docs/qr-codes/burghaus-bielstein.png) | **Burghaus Bielstein** <br> Spatial Sound mit zwei Zylindern. Der Sound kann einzeln an und aus geschaltet werden. |
+| ![QR-Code](./docs/qr-codes/st-bonifatius-kriegsgeschichte.png) | **St. Bonifatius Kriegsgeschichte** <br> Platzierung eines Pfades mit Hilfe von Knoten und Linien. |
+| ![QR-Code](./docs/qr-codes/strasse-der-arbeit-steinbreche-weiershagen.png) | **"Straße der Arbeit" Steinbreche Weiershagen** <br> 3D-Video mit Interaktionsmöglichkeit zum Starten und Stoppen. |

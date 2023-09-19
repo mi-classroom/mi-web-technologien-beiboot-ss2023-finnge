@@ -61,6 +61,7 @@
       kind="captions"
       srclang="de"
       label="Deutsch"
+      default
     />
   </video>
   <div class="bottom">
@@ -74,7 +75,10 @@
   </div>
 </section>
 
-<section id="navigation">
+<section
+  id="navigation"
+  style="--background-image: url({base}/images/aggertalsperre.jpg_667295446.jpg)"
+>
   <HeroButton type="primary" href="{base}/pfad">
     <span class="fs-md">Ich will nur ein bisschen</span><br />
     stöbern
@@ -110,7 +114,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-lg);
-    background-image: url("images/aggertalsperre.jpg_667295446.jpg");
+    background-image: var(--background-image);
     background-size: cover;
     background-position: center;
   }
