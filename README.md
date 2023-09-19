@@ -10,7 +10,7 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 
 - [Proof-of-Concepts](./proof-of-concepts/README.md)
 - [ADRs](./docs/adrs/README.md)
-- [Zeitaufwände](./docs/zeitaufwand.md)
+- [Zeitaufwände mit allg. Doku](./docs/zeitaufwand.md)
 - [Review Process](./docs/review-process.md)
 
 ## Befehle
