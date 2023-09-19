@@ -6,6 +6,7 @@ import { base } from "$app/paths";
 import BergischerLoeweBahnhofBielstein from "@/components/scenes/bergischer-loewe-bahnhof-bielstein.svelte";
 import BurghausBielstein from "@/components/scenes/burghaus-bielstein.svelte";
 import StBonifatiusKriegsgeschichte from "@/components/scenes/st-bonifatius-kriegsgeschichte.svelte";
+import StrasseDerArbeitSteinbrecheWeiershagen from "@/components/scenes/strasse-der-arbeit-steinbreche-weiershagen.svelte";
 
 type ArExperience = {
   id: string;
@@ -79,6 +80,7 @@ export const paths: ArPath[] = [
           latitude: 50.97183894790319, // Koordinate ungewiss
           longitude: 7.489192933339773, // Koordinate ungewiss
         },
+        sceneComponent: StrasseDerArbeitSteinbrecheWeiershagen,
       },
       {
         title: "Eisenbahnbrücke an der Mühle",
