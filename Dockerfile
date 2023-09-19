@@ -1,15 +1,3 @@
-FROM node:18.17 AS build
+FROM httpd:2.4
 
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-RUN npm run build
-
-FROM httpd:2.4 AS deploy
-
-WORKDIR /usr/local/apache2/htdocs/
-
-COPY --from=build /app/dist/ .
+COPY proof-of-concepts /usr/local/apache2/htdocs/

@@ -9,7 +9,7 @@
 * Ausprobieren der Implementierungs-Varianten
 * Dokumentation der Entscheidungen in ADRs
 * Erstellung erster PoCs
-
+* Dokumentation der [Learnings](../proof-of-concepts/README.md)
 
 ## [Aufgabe 2](https://github.com/mi-classroom/mi-web-technologien-beiboot-ss2023-finnge/issues/4) Review Prozess einrichten
 
@@ -32,4 +32,4 @@
 * Erstellung von ADRs zur Entscheidung der Technologien
 * Entwicklung einer Struktur für die einfache Ergänzung von AR-Szenen
 * Einbau und Weiterentwicklung der PoC-Szenen in die Applikation
-* Erstellung von Dokumentationen
+* Erstellung von [Dokumentationen](demoanwendung.md) für die Demoanwendung
