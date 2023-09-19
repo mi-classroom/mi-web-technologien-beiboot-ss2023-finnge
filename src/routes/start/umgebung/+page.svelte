@@ -90,6 +90,5 @@
     &:active {
       color: var(--color-primary-dark);
     }
-
   }
 </style>
