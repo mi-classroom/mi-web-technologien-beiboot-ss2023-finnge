@@ -11,12 +11,8 @@
 
   import {
     Scene,
-    PerspectiveCamera,
-    HemisphereLight,
     WebGLRenderer,
     Mesh,
-    RingGeometry,
-    MeshBasicMaterial,
     CylinderGeometry,
     MeshPhongMaterial,
     AudioListener,
@@ -25,24 +21,14 @@
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
   import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
 
+  import { light, reticle, cameraFactory, rendererFactory } from "./common";
+
   export let renderer: WebGLRenderer;
   export let canvasElement: HTMLCanvasElement;
   let audioElement: HTMLAudioElement;
 
   const scene = new Scene();
-
-  // Lighting
-  const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
-  light.position.set(0.5, 1, 0.25);
   scene.add(light);
-
-  // Reticle
-  const reticle = new Mesh(
-    new RingGeometry(0.15, 0.2, 32).rotateX(-Math.PI / 2),
-    new MeshBasicMaterial(),
-  );
-  reticle.matrixAutoUpdate = false;
-  reticle.visible = false;
   scene.add(reticle);
 
   // Cube
@@ -65,28 +51,15 @@
 
   export const init = () => {
     // Camera
-    const camera = new PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
+    const camera = cameraFactory(window.innerWidth / window.innerHeight);
 
     // Rendering
-    const gl = canvasElement.getContext("webgl", {
-      xrCompatible: true,
-    });
-    if (!gl) {
-      throw new Error("WebGL not supported");
-    }
-    renderer = new WebGLRenderer({
-      canvas: canvasElement,
-      context: gl,
-      alpha: true,
-    });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.xr.enabled = true;
+    renderer = rendererFactory(
+      canvasElement,
+      window.devicePixelRatio,
+      window.innerWidth,
+      window.innerHeight,
+    );
 
     canvasElement.after(
       ARButton.createButton(renderer, {

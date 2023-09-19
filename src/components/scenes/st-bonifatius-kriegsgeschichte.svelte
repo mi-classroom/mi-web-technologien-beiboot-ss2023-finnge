@@ -8,19 +8,18 @@
   import {
     Scene,
     PerspectiveCamera,
-    HemisphereLight,
     WebGLRenderer,
     Mesh,
     DodecahedronGeometry,
-    RingGeometry,
-    MeshBasicMaterial,
     MeshPhongMaterial,
     Line,
     LineBasicMaterial,
     BufferGeometry,
   } from "three";
-  import type { ColorRepresentation } from "three";
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
+
+  import { light, reticle, cameraFactory, rendererFactory } from "./common";
+  import type { ObjectColorMap } from "./common";
 
   export let renderer: WebGLRenderer;
 
@@ -28,27 +27,10 @@
   let camera: PerspectiveCamera;
 
   const scene = new Scene();
-
-  // Lighting
-  const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
-  light.position.set(0.5, 1, 0.25);
   scene.add(light);
-
-  // Reticle
-  const reticle = new Mesh(
-    new RingGeometry(0.15, 0.2, 32).rotateX(-Math.PI / 2),
-    new MeshBasicMaterial(),
-  );
-  reticle.matrixAutoUpdate = false;
-  reticle.visible = false;
   scene.add(reticle);
 
   // Knot Object
-  type ObjectColorMap = {
-    normal: ColorRepresentation;
-    active: ColorRepresentation;
-  };
-
   const objectKnotColor: ObjectColorMap = {
     normal: 0x6929c4,
     active: 0x005d5d,
@@ -70,21 +52,15 @@
 
   export function init() {
     // Camera
-    camera = new PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
+    camera = cameraFactory(window.innerWidth / window.innerHeight);
 
     // Rendering
-    renderer = new WebGLRenderer({
-      canvas: canvasElement,
-      alpha: true,
-    });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.xr.enabled = true;
+    renderer = rendererFactory(
+      canvasElement,
+      window.devicePixelRatio,
+      window.innerWidth,
+      window.innerHeight,
+    );
 
     canvasElement.after(
       ARButton.createButton(renderer, {

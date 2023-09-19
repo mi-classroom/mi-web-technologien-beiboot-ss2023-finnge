@@ -10,12 +10,9 @@
   import {
     Scene,
     PerspectiveCamera,
-    HemisphereLight,
     WebGLRenderer,
     Mesh,
     DodecahedronGeometry,
-    RingGeometry,
-    MeshBasicMaterial,
     AudioListener,
     PositionalAudio,
     MeshPhongMaterial,
@@ -23,9 +20,11 @@
     Vector2,
     Raycaster,
   } from "three";
-  import type { ColorRepresentation } from "three";
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
   import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
+
+  import { light, reticle, cameraFactory, rendererFactory } from "./common";
+  import type { ObjectColorMap } from "./common";
 
   export let renderer: WebGLRenderer;
 
@@ -37,19 +36,7 @@
   let hasPlacedScene = false;
 
   const scene = new Scene();
-
-  // Lighting
-  const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
-  light.position.set(0.5, 1, 0.25);
   scene.add(light);
-
-  // Reticle
-  const reticle = new Mesh(
-    new RingGeometry(0.15, 0.2, 32).rotateX(-Math.PI / 2),
-    new MeshBasicMaterial(),
-  );
-  reticle.matrixAutoUpdate = false;
-  reticle.visible = false;
   scene.add(reticle);
 
   // Objects
@@ -59,11 +46,6 @@
   );
   objectBase.visible = false;
   scene.add(objectBase);
-
-  type ObjectColorMap = {
-    normal: ColorRepresentation;
-    active: ColorRepresentation;
-  };
 
   const objectDishwasherColor: ObjectColorMap = {
     normal: 0x6929c4,
@@ -105,21 +87,15 @@
 
   export function init() {
     // Camera
-    camera = new PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
+    camera = cameraFactory(window.innerWidth / window.innerHeight);
 
     // Rendering
-    renderer = new WebGLRenderer({
-      canvas: canvasElement,
-      alpha: true,
-    });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.xr.enabled = true;
+    renderer = rendererFactory(
+      canvasElement,
+      window.devicePixelRatio,
+      window.innerWidth,
+      window.innerHeight,
+    );
 
     canvasElement.after(
       ARButton.createButton(renderer, {
