@@ -26,6 +26,9 @@ Als organisatorischen Rahmen für das Projekt nutzen wir GitHub Classroom. Inhal
 
 ## Aufgabe 4: Basis-App Anwendung
 
+> [!IMPORTANT]
+> Die AR-Anwendung können nur auf Smartphones mit Android oder iOS gestartet werden. Auf iOS ist [Mozillas WebXR Viewer](https://apps.apple.com/us/app/webxr-viewer/id1295998056) notwendig. Auf Android ist [Google Chrome](https://play.google.com/store/apps/details?id=com.android.chrome&hl=de&gl=US) notwendig.
+
 In der Basis-App anwendung wurden die in den PoCs entwickelten AR-Anwendungen in einen Applikations-Kontext gestellt. In [ADR-004](./docs/adrs/004-sveltekit.md) wurde sich dafür entschieden diese mit SvelteKit umzusetzen. Die Basis Anwendung ist über <https://mi-classroom.github.io/mi-web-technologien-beiboot-ss2023-finnge> erreichbar.
 
 Es wurden mehrere AR-Anwendungen implementiert. Über die folgenden QR-Codes, die in den Erlebnis-Pfaden ausliegen könnten, wird eine AR-Anwendung gestartet.
