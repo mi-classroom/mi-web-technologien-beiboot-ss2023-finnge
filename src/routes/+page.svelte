@@ -55,9 +55,9 @@
 
 <section id="video-tutorial">
   <video bind:this={video}>
-    <source src="{base}/videos/intro-video.mp4" type="video/mp4" />
+    <source src="{base}/media/intro-video.mp4" type="video/mp4" />
     <track
-      src="{base}/videos/intro-video.vtt"
+      src="{base}/media/intro-video.vtt"
       kind="captions"
       srclang="de"
       label="Deutsch"
