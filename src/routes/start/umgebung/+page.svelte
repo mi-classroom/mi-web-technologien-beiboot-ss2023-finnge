@@ -53,7 +53,7 @@
   {/if}
 </p>
 
-<style>
+<style type="scss">
   ul {
     list-style: none;
     padding: 0;
@@ -76,5 +76,20 @@
 
   p {
     padding: var(--spacing-xxs) var(--outer-margin);
+  }
+
+  a {
+    color: var(--color-darkest);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: var(--color-primary-dark);
+    }
+
   }
 </style>
