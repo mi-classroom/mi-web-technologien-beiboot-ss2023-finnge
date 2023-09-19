@@ -144,7 +144,6 @@
     const raycaster = new Raycaster();
 
     document.addEventListener("click", (e) => {
-
       mouseVector.x = 2 * (e.clientX / renderer.domElement.clientWidth) - 1;
       mouseVector.y = 1 - 2 * (e.clientY / renderer.domElement.clientHeight);
       raycaster.setFromCamera(mouseVector, camera);

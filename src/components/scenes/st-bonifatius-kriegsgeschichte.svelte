@@ -1,13 +1,9 @@
 <script lang="ts">
   /**
-   * This is the AR scene for the Bergischer Löwe in Bielstein.
-   * It is a simple scene with a cylinder and a sound.
-   * The sound is played when the cylinder is selected.
-   * The cylinder is placed on the ground.
-   * The sound is played from the cylinder.
+   * This is the AR scene for the St. Bonifatius church in Kriegsgeschichte.
+   * It is a simple scene with a knot object. The knot object is placed on the ground.
+   * A line is drawn between the knot objects.
    */
-
-  import { base } from "$app/paths";
 
   import {
     Scene,
@@ -15,19 +11,21 @@
     HemisphereLight,
     WebGLRenderer,
     Mesh,
+    DodecahedronGeometry,
     RingGeometry,
     MeshBasicMaterial,
-    CylinderGeometry,
     MeshPhongMaterial,
-    AudioListener,
-    PositionalAudio,
+    Line,
+    LineBasicMaterial,
+    BufferGeometry,
   } from "three";
+  import type { ColorRepresentation } from "three";
   import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
-  import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper.js";
 
   export let renderer: WebGLRenderer;
+
   export let canvasElement: HTMLCanvasElement;
-  let audioElement: HTMLAudioElement;
+  let camera: PerspectiveCamera;
 
   const scene = new Scene();
 
@@ -45,27 +43,34 @@
   reticle.visible = false;
   scene.add(reticle);
 
-  // Cube
-  const cube = new CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0);
-  const material = new MeshPhongMaterial({ color: 0xdd1166 });
-  const mesh = new Mesh(cube, material);
-  mesh.visible = false;
-  scene.add(mesh);
+  // Knot Object
+  type ObjectColorMap = {
+    normal: ColorRepresentation;
+    active: ColorRepresentation;
+  };
 
-  // Audio
-  const listener = new AudioListener();
-  const sound = new PositionalAudio(listener);
-  sound.setRefDistance(1);
-  sound.setDirectionalCone(180, 230, 0.1);
+  const objectKnotColor: ObjectColorMap = {
+    normal: 0x6929c4,
+    active: 0x005d5d,
+  };
+  const objectKnot = new Mesh(
+    new DodecahedronGeometry(0.01, 0).translate(0, 0.01, 0),
+    new MeshPhongMaterial({ color: objectKnotColor.normal }),
+  );
+  objectKnot.visible = false;
+  scene.add(objectKnot);
 
-  const helper = new PositionalAudioHelper(sound, 1);
-  sound.add(helper);
+  const knots: Mesh[] = [];
 
-  let firstTimePlaying = true;
+  // Line Object
+  const objectLine = new Line(
+    new BufferGeometry(),
+    new LineBasicMaterial({ color: 0xff7eb6, linewidth: 10 }),
+  );
 
-  export const init = () => {
+  export function init() {
     // Camera
-    const camera = new PerspectiveCamera(
+    camera = new PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
@@ -73,15 +78,8 @@
     );
 
     // Rendering
-    const gl = canvasElement.getContext("webgl", {
-      xrCompatible: true,
-    });
-    if (!gl) {
-      throw new Error("WebGL not supported");
-    }
     renderer = new WebGLRenderer({
       canvas: canvasElement,
-      context: gl,
       alpha: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -100,10 +98,6 @@
     const controller = renderer.xr.getController(0);
     controller.addEventListener("select", onSelect);
     scene.add(controller);
-
-    // Audio
-    camera.add(listener);
-    sound.setMediaElementSource(audioElement);
 
     // Animation
     let hitTestSource: XRHitTestSource | undefined = undefined;
@@ -158,24 +152,48 @@
       renderer.clear();
       renderer.dispose();
     };
-  };
+  }
 
   function onSelect() {
     if (reticle.visible) {
-      if (firstTimePlaying) {
-        firstTimePlaying = false;
-        audioElement.play();
+      reticle.visible = false;
+
+      // Add knot
+      knots.push(objectKnot.clone());
+
+      const newKnot = knots[knots.length - 1];
+      scene.add(newKnot);
+      newKnot.material = new MeshPhongMaterial({
+        color: objectKnotColor.active,
+      });
+      newKnot.visible = true;
+
+      reticle.matrix.decompose(
+        newKnot.position,
+        newKnot.quaternion,
+        newKnot.scale,
+      );
+
+      // Last knot
+      if (knots.length < 2) {
+        return;
       }
-      mesh.visible = true;
-      mesh.add(sound);
-      reticle.matrix.decompose(mesh.position, mesh.quaternion, mesh.scale);
+      const lastKnot = knots[knots.length - 2];
+      lastKnot.material = new MeshPhongMaterial({
+        color: objectKnotColor.normal,
+      });
+
+      // Add line
+      const newLine = objectLine.clone();
+      scene.add(newLine);
+      newLine.visible = true;
+      newLine.geometry = new BufferGeometry().setFromPoints([
+        lastKnot.position,
+        newKnot.position,
+      ]);
     }
   }
 </script>
-
-<audio bind:this={audioElement} loop preload="auto" style="display: none">
-  <source src="{base}/media/audio.mp3" type="audio/mpeg" />
-</audio>
 
 <canvas bind:this={canvasElement}></canvas>
 

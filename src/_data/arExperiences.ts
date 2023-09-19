@@ -5,6 +5,7 @@ import { base } from "$app/paths";
 
 import BergischerLoeweBahnhofBielstein from "@/components/scenes/bergischer-loewe-bahnhof-bielstein.svelte";
 import BurghausBielstein from "@/components/scenes/burghaus-bielstein.svelte";
+import StBonifatiusKriegsgeschichte from "@/components/scenes/st-bonifatius-kriegsgeschichte.svelte";
 
 type ArExperience = {
   id: string;
@@ -62,6 +63,7 @@ export const paths: ArPath[] = [
           latitude: 50.96292054689792,
           longitude: 7.49541172547757,
         },
+        sceneComponent: StBonifatiusKriegsgeschichte,
       },
     ],
   },
